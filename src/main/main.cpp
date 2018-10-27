@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <iostream>
 #include "../parser/lefdef/DefReader.h"
@@ -7,7 +6,7 @@
 
 int main(){
 
-  string def_file = "/home/cadmium/CAD_project/code/cp_aroutex/ispd18_sample.input.def";
+  string def_file = "/home/yi/Utexas/CAD/CAD/parser/ispd18_sample.input.def";
 
   RawDataBase* db = new RawDataBase();
 
