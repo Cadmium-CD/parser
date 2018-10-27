@@ -216,12 +216,13 @@ PROJECT_NAMESPACE_BEGIN
                                 v.port(portIndex)->getRect(geoIndex)->xl,
                                 v.port(portIndex)->getRect(geoIndex)->yl,
                                 v.port(portIndex)->getRect(geoIndex)->xh,
-                                v.port(portIndex)->getRect(geoIndex)->yh
+                                v.port(portIndex)->getRect(geoIndex)->yh,
+				v.name()
                         );
-                        _db.getStdCellLib(currentMacroName).addPinName(v.name());
+                        //_db.getStdCellLib(currentMacroName).addPinName(v.name());
                     }
 
-                    
+
                 }
 
             }

@@ -1,28 +1,28 @@
 /**
  * @file   LefDriver.h
- * @brief  Driver for Lef parser 
+ * @brief  Driver for Lef parser
  *
  * - LefParser is modified from Cadence open source parser.
  * Original version stays in C style and has very poor support
  * to object-oriented programming.
- * LefParser borrows its data structure and bison grammar, 
+ * LefParser borrows its data structure and bison grammar,
  * but wrap it in C++ style.
- * Please follow the [LICENSE](@ref Parsers_LefParser_License) agreement from Cadence when use the parser. 
+ * Please follow the [LICENSE](@ref Parsers_LefParser_License) agreement from Cadence when use the parser.
  *
- * - The original data structure abuses malloc and free without 
- * proper initialization to pointers, which may lead to 
+ * - The original data structure abuses malloc and free without
+ * proper initialization to pointers, which may lead to
  * memory allocating problems.
- * Although I fixed some of the bugs and it looks good with current 
+ * Although I fixed some of the bugs and it looks good with current
  * benchmarks, there may still contain problems with other benchmarks.
  *
- * - Another issue is that keywords may have conflicts with STRING 
- * in LefParser.yy, so I created a generalized string type GSTRING 
- * which includes all string and keywords. 
- * I did not replace all STRING with GSTRING, because it may result in 
- * performance degradation. 
- * If a new benchmark causes syntax error during parsing, then replace 
- * STRING of specific grammar with GSTRING. 
- * The main idea is to reduce the usage of GSTRING. 
+ * - Another issue is that keywords may have conflicts with STRING
+ * in LefParser.yy, so I created a generalized string type GSTRING
+ * which includes all string and keywords.
+ * I did not replace all STRING with GSTRING, because it may result in
+ * performance degradation.
+ * If a new benchmark causes syntax error during parsing, then replace
+ * STRING of specific grammar with GSTRING.
+ * The main idea is to reduce the usage of GSTRING.
  *
  * @author Yibo Lin
  * @date   Oct 2014
@@ -44,15 +44,15 @@ namespace LefParser {
 using std::cout;
 using std::endl;
 using std::cerr;
-using std::string; 
+using std::string;
 using std::vector;
 using std::pair;
 using std::make_pair;
 
-/// forward declaration 
+/// forward declaration
 class LefDataBase;
 
-/** 
+/**
  * @class LefParser::Driver
  * The Driver class brings together all components. It creates an instance of
  * the Parser and Scanner classes and connects them. Then the input stream is
@@ -64,7 +64,7 @@ class Driver
 {
 public:
     /// construct a new parser driver context
-    /// @param db reference to database 
+    /// @param db reference to database
     Driver(LefDataBase& db);
 	~Driver();
 
@@ -110,10 +110,64 @@ protected:
     LefDataBase& m_db;
 };
 
-/// @brief API for LefParser. 
-/// Read LEF file and initialize database by calling user-defined callback functions. 
+class Pin
+{
+public:
+  double pinX1,pinY1,pinXh,pinYh;
+};
+
+
+class StdCell
+{
+public:
+  double sizeX;
+  double sizeY;
+
+  int leftEdge;
+  int rightEdge;
+
+  std::unordered_map<std::string, *Pin> pinArray;
+
+  void setSizeX(double size){
+    sizeX = size;
+  }
+
+  void setSizeY(double size){
+    sizeY = size;
+  }
+
+  void setEdgeLeft(int edge){
+    leftEdge = edge;
+  }
+
+  void setEdgeRight(int edge){
+    rightEdge = edge;
+  }
+
+  void setBottomVss(bool vss){
+    Pin *p = new Pin();
+    if (vss) {
+      pinArray.insert("vss", p);
+    } else {
+      pinArray.insert("vdd", p);
+    }
+
+  }
+
+  void addPin(double x1, double y1, double xh, double yh, std::string name){
+    Pin *p = new Pin();
+    p->pinX1 = x1;
+    p->pinY1 = y1;
+    p->pinXh = xh;
+    p->pinYh = yh;
+    pinArray.insert(name, p);
+  }
+};
+
+/// @brief API for LefParser.
+/// Read LEF file and initialize database by calling user-defined callback functions.
 /// @param db database which is derived from @ref LefParser::LefDataBase
-/// @param lefFile LEF file 
+/// @param lefFile LEF file
 bool read(LefDataBase& db, const string& lefFile);
 
 } // namespace example

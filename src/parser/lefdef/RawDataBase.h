@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
+#include "LefDriver.h"
 
 using namespace std;
 //using namespace LefParser;
@@ -98,11 +99,10 @@ public:
 //LEF code
   double siteSizeX;
   double siteSizeY;
-<<<<<<< HEAD
-=======
+
 
   //vector<LefParser::StdCell> stdCellArray;
-  std::unordered_map<std::string, const LefParser::StdCell> stdCellArray; 
+  std::unordered_map<std::string, const LefParser::StdCell> stdCellArray;
 
   void setLefSiteSizeX(double sizeX){
     siteSizeX = sizeX;
@@ -120,7 +120,7 @@ public:
   LefParser::StdCell getStdCellLib(std::string name){
     return stdCellArray.find(name);
   }
->>>>>>> 9d5a5396cf48254ea8dfd8ba3fcb6663978e40ab
+
 
   //vector<LefParser::StdCell> stdCellArray;
   std::unordered_map<std::string, StdCell> stdCellArray;
