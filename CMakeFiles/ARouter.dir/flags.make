@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -st
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/cadmium/CAD_project/code/cp_aroutex/src -I/home/cadmium/CAD_project/code/cp_aroutex/include 
+CXX_INCLUDES = -I/home/cadmium/CAD_project/parser/src -I/home/cadmium/CAD_project/parser/include 
 

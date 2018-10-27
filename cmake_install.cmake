@@ -1,4 +1,4 @@
-# Install script for directory: /home/cadmium/CAD_project/code/cp_aroutex
+# Install script for directory: /home/cadmium/CAD_project/parser
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/cadmium/CAD_project/code/cp_aroutex/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/cadmium/CAD_project/parser/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

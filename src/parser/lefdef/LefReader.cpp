@@ -5,7 +5,7 @@
 
 #include "LefReader.h"
 
-PROJECT_NAMESPACE_BEGIN
+
 
 
     void LefReader::lef_version_cbk(const std::string &v) {
@@ -100,7 +100,7 @@ PROJECT_NAMESPACE_BEGIN
         currentMacroName = v;
         StdCell temp = StdCell();
         temp.setMacroName(currentMacroName);
-        _db.addStdCellLib(currentMacroName, temp);
+        _db.addStdCellLib( temp);
     }
 
     void LefReader::lef_macro_cbk(lefiMacro const &v) {
@@ -108,8 +108,8 @@ PROJECT_NAMESPACE_BEGIN
         assert(v.hasXSymmetry());
         assert(v.hasYSymmetry());
         assert(v.originX() == 0 && v.originY() == 0);
-        _db.getStdCellLib()[currentMacroName].setSizeX(v.sizeX());
-        _db.getStdCellLib()[currentMacroName].setSizeY(v.sizeY());
+        _db.getStdCellLib(currentMacroName).setSizeX(v.sizeX());
+        _db.getStdCellLib(currentMacroName).setSizeY(v.sizeY());
 
         /// Process the string for extracting the edgetype information
         bool left = true;
@@ -334,4 +334,4 @@ PROJECT_NAMESPACE_BEGIN
         LefParser::read(reader, fileName.c_str());
         //db =reader.getDb();
     }
-PROJECT_NAME_SPACE_END
+

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "../parser/lefdef/DefReader.h"
+#include "../parser/lefdef/LefReader.h"
 #include <string>
 
 int main(){
