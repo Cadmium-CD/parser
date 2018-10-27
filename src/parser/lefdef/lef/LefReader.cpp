@@ -5,6 +5,7 @@
 
 #include "LefReader.h"
 
+PROJECT_NAMESPACE_BEGIN
 
 
     void LefReader::lef_version_cbk(const std::string &v) {
@@ -215,13 +216,12 @@
                                 v.port(portIndex)->getRect(geoIndex)->xl,
                                 v.port(portIndex)->getRect(geoIndex)->yl,
                                 v.port(portIndex)->getRect(geoIndex)->xh,
-                                v.port(portIndex)->getRect(geoIndex)->yh,
-				v.name()
+                                v.port(portIndex)->getRect(geoIndex)->yh
                         );
-                        //_db.getStdCellLib(currentMacroName).addPinName(v.name());
+                        _db.getStdCellLib(currentMacroName).addPinName(v.name());
                     }
 
-
+                    
                 }
 
             }
@@ -328,8 +328,9 @@
 
     }
 
-    void readLef(std::string const &fileName, MacroDataBase &db) {
+    void readLef(std::string const &fileName, RawDatabase &db) {
         LefReader reader = LefReader(db);
         LefParser::read(reader, fileName.c_str());
         //db =reader.getDb();
     }
+PROJECT_NAME_SPACE_END

@@ -6,10 +6,11 @@
 #define _LEFREADER_H
 
 #include "LefDriver.h"
-//#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string.hpp>
 //#include "config.h"
-#include "RawDataBase2.h"
+//#include "RawDatabase.h"
 
+PROJECT_NAMESPACE_BEGIN
     class LefReader : public LefParser::LefDataBase {
     public:
         /*
@@ -17,7 +18,7 @@
          */
         //LefReader() = default;
 
-        explicit LefReader(MacroDataBase &db)
+        explicit LefReader(RawDatabase &db)
                 : _db(db) {
             //_db = db;
             currentMacroName = "";
@@ -26,14 +27,14 @@
         /*
          * Getter
          */
-        const MacroDataBase &getDb() const {
+        const RawDatabase &getDb() const {
             return _db;
         }
 
         /*
          * Setter
          */
-        void setDb(const MacroDataBase &_db) {
+        void setDb(const RawDatabase &_db) {
             LefReader::_db = _db;
         }
 
@@ -62,7 +63,7 @@
 
         void lef_busbitchars_cbk(const std::string &v) override;
 
-        void lef_layer_cbk(lefiLayer const &v) override;
+        void lef_laye_cbk(lefiLayer const &v) override;
 
         void lef_maxstackvia_cbk(lefiMaxStackVia const &v) override;
 
@@ -129,10 +130,10 @@
 
 
     private:
-        MacroDataBase &_db;
+        RawDatabase &_db;
         std::string currentMacroName = "";
     };
-    void readLef(std::string const &fileName, MacroDataBase &db);
-
+    void readLef(std::string const &fileName, RawDatabase &db);
+PROJECT_NAME_SPACE_END
 
 #endif //MIXEDSTACKLEGALIZATION_LEFREADER_H
