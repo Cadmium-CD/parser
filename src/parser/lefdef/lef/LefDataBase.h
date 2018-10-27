@@ -252,6 +252,63 @@ class LefDataBase
 		void lef_user_cbk_reminder(const char* str) const;
 };
 
+
+class Pin
+{
+  double pinX1,pinY1,pinXh,pinYh;
+};
+
+
+class StdCell
+{
+  double sizeX;
+  double sizeY;
+
+  int leftEdge;
+  int rightEdge;
+
+  std::unordered_map<std::string, Pin> pinArray;
+
+  void setSizeX(double size){
+    sizeX = size;
+  }
+
+  void setSizeY(double size){
+    sizeY = size;
+  }
+
+  void setEdgeLeft(int edge){
+    leftEdge = edge;
+  }
+
+  void setEdgeRight(int edge){
+    rightEdge = edge;
+  }
+
+  void setBottomVss(bool botVss){
+    bottomVss = botVss;
+  }
+
+  void setBottomVss(bool vss){
+    Pin p = new Pin();
+    if (vss) {
+      pinArray.insert("vss", p);
+    } else {
+      pinArray.insert("vdd", p);
+    }
+
+  }
+
+  void addPin(double x1, double y1, double xh, double yh, std::string name){
+    Pin p = new Pin();
+    p.pinX1 = x1;
+    p.pinY1 = y1;
+    p.pinXh = xh;
+    p.pinYh = yh;
+    pinArray.insert(name, p);
+  }
+};
+
 } // namespace LefParser
 
 #endif

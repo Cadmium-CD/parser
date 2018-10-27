@@ -99,7 +99,7 @@ public:
   double siteSizeY;
 
   //vector<LefParser::StdCell> stdCellArray;
-  std::unordered_map<std::string, LefParser::StdCell> stdCellArray; 
+  std::unordered_map<std::string, const LefParser::StdCell> stdCellArray; 
 
   void setLefSiteSizeX(double sizeX){
     siteSizeX = sizeX;
