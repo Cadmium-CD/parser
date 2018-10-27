@@ -113,6 +113,7 @@ protected:
 class Pin
 {
 public:
+  string name;
   double pinX1,pinY1,pinXh,pinYh;
 };
 
@@ -120,13 +121,14 @@ public:
 class StdCell
 {
 public:
+  std::string macroName;
   double sizeX;
   double sizeY;
 
   int leftEdge;
   int rightEdge;
 
-  std::unordered_map<std::string, *Pin> pinArray;
+  vector<Pin> pinArray;
 
   void setSizeX(double size){
     sizeX = size;
@@ -147,11 +149,17 @@ public:
   void setBottomVss(bool vss){
     Pin *p = new Pin();
     if (vss) {
-      pinArray.insert("vss", p);
+      p->name = "vss";
+      pinArray.pushback(p);
     } else {
-      pinArray.insert("vdd", p);
+      p->name = "vdd";
+      pinArray.pushback(p);
     }
 
+  }
+
+  void setMacroName(std::string name){
+    macroName = name;
   }
 
   void addPin(double x1, double y1, double xh, double yh, std::string name){
@@ -160,8 +168,10 @@ public:
     p->pinY1 = y1;
     p->pinXh = xh;
     p->pinYh = yh;
-    pinArray.insert(name, p);
+    p.name = name;
+    pinArray.pushback(p);
   }
+
 };
 
 /// @brief API for LefParser.

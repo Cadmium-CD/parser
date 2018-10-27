@@ -1,7 +1,6 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <unordered_map>
 #include "LefDriver.h"
 
 using namespace std;
@@ -122,8 +121,7 @@ public:
   }
 
 
-  //vector<LefParser::StdCell> stdCellArray;
-  std::unordered_map<std::string, StdCell> stdCellArray;
+  vector<LefParser::StdCell> stdCellArray;
 
   void setLefSiteSizeX(double sizeX){
     siteSizeX = sizeX;
@@ -134,10 +132,15 @@ public:
   }
 
 //TODO
-  void addStdCellLib(std::string name, const LefParser::StdCell stdCell){
-    stdCellArray.insert(name, stdCell);
+  void addStdCellLib(const LefParser::StdCell stdCell){
+    stdCellArray.pushback(stdCell);
   }
 
   LefParser::StdCell getStdCellLib(std::string name){
-    return stdCellArray.find(name);
+    for (int = 0; i < stdCellArray.size(); ++i){
+      if (name.compare(stdCellArray[i].macroName) == 0){
+        return stdCellArray[i];
+      }
+    }
+
   }
