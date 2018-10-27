@@ -4,6 +4,7 @@
 #include <unordered_map>
 
 using namespace std;
+//using namespace LefParser;
 class RawDataBase{
 
 public:
@@ -97,6 +98,8 @@ public:
 //LEF code
   double siteSizeX;
   double siteSizeY;
+<<<<<<< HEAD
+=======
 
   //vector<LefParser::StdCell> stdCellArray;
   std::unordered_map<std::string, LefParser::StdCell> stdCellArray; 
@@ -117,4 +120,24 @@ public:
   LefParser::StdCell getStdCellLib(std::string name){
     return stdCellArray.find(name);
   }
+>>>>>>> 9d5a5396cf48254ea8dfd8ba3fcb6663978e40ab
 
+  //vector<LefParser::StdCell> stdCellArray;
+  std::unordered_map<std::string, StdCell> stdCellArray;
+
+  void setLefSiteSizeX(double sizeX){
+    siteSizeX = sizeX;
+  }
+
+  void setLefSiteSizeY(double sizeY){
+    siteSizeY = sizeY;
+  }
+
+//TODO
+  void addStdCellLib(std::string name, const LefParser::StdCell stdCell){
+    stdCellArray.insert(name, stdCell);
+  }
+
+  LefParser::StdCell getStdCellLib(std::string name){
+    return stdCellArray.find(name);
+  }
