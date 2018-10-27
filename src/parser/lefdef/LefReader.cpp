@@ -145,16 +145,16 @@ PROJECT_NAMESPACE_BEGIN
             assert(hasedge);
             if (hasedge) {
                 if (left) {
-                    _db.getStdCellLib()[currentMacroName].setEdgeLeft(2);
+                    _db.getStdCellLib(currentMacroName).setEdgeLeft(2);
                 }
                 else {
-                    _db.getStdCellLib()[currentMacroName].setEdgeLeft(1);
+                    _db.getStdCellLib(currentMacroName).setEdgeLeft(1);
                 }
                 if (right) {
-                    _db.getStdCellLib()[currentMacroName].setEdgeRight(2);
+                    _db.getStdCellLib(currentMacroName).setEdgeRight(2);
                 }
                 else {
-                    _db.getStdCellLib()[currentMacroName].setEdgeRight(1);
+                    _db.getStdCellLib(currentMacroName).setEdgeRight(1);
                 }
 
             }
@@ -185,7 +185,7 @@ PROJECT_NAMESPACE_BEGIN
                 for (IndexType geoIndex = 0; geoIndex < v.port(portIndex)->numItems(); ++geoIndex) {
                     if (v.port(portIndex)->itemType(geoIndex) == lefiGeomRectE) {
                         if (v.port(portIndex)->getRect(geoIndex)->yh < 0.5) {
-                            _db.getStdCellLib()[currentMacroName].setBottomVss(false);
+                            _db.getStdCellLib(currentMacroName).setBottomVss(false);
                             //std::cout<<currentMacroName<<" vdd"<<std::endl;
                             break;
                         }
@@ -199,7 +199,7 @@ PROJECT_NAMESPACE_BEGIN
                 for (IndexType geoIndex = 0; geoIndex < v.port(portIndex)->numItems(); ++geoIndex) {
                     if (v.port(portIndex)->itemType(geoIndex) == lefiGeomRectE) {
                         if (v.port(portIndex)->getRect(geoIndex)->yh < 0.5) {
-                            _db.getStdCellLib()[currentMacroName].setBottomVss(true);
+                            _db.getStdCellLib(currentMacroName).setBottomVss(true);
                             //std::cout<<currentMacroName<<" vss"<<std::endl;
                             break;
                         }
@@ -212,13 +212,13 @@ PROJECT_NAMESPACE_BEGIN
                 //lefiGeometries test = *v.port(portIndex);
                 for (IndexType geoIndex = 0; geoIndex < v.port(portIndex)->numItems(); ++geoIndex) {
                     if (v.port(portIndex)->itemType(geoIndex) == lefiGeomRectE) {
-                        _db.getStdCellLib()[currentMacroName].addPin(
+                        _db.getStdCellLib(currentMacroName).addPin(
                                 v.port(portIndex)->getRect(geoIndex)->xl,
                                 v.port(portIndex)->getRect(geoIndex)->yl,
                                 v.port(portIndex)->getRect(geoIndex)->xh,
                                 v.port(portIndex)->getRect(geoIndex)->yh
                         );
-                        _db.getStdCellLib()[currentMacroName].addPinName(v.name());
+                        _db.getStdCellLib(currentMacroName).addPinName(v.name());
                     }
 
                     
@@ -247,6 +247,7 @@ PROJECT_NAMESPACE_BEGIN
     }
 
     void LefReader::lef_prop_cbk(lefiProp const &v) {
+/*
         std::string spacingkwd = "CELLEDGESPACINGTABLE";
         std::string edgetpkwd = "EDGETYPE";
         if (v.hasString()) {
@@ -272,6 +273,7 @@ PROJECT_NAMESPACE_BEGIN
 
             }
         }
+    */
     }
 
     void LefReader::lef_noisemargin_cbk(lefiNoiseMargin const &v) {

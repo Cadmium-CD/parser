@@ -6,7 +6,7 @@
  */
 
 #include "LefDriver.h"
-#include <thirdparty/limbo/preprocessor/Msg.h>
+#include "../../thirdparty/limbo/preprocessor/Msg.h"
 #include <cctype>
 #include <cstring>
 #include <unistd.h>
@@ -29,27 +29,27 @@ Driver::~Driver()
 /// =========== callbacks ============
 ///@{
 
-/// a local temporary global variable 
-/// refer to Driver::m_db everytime parsing a file 
-/// reset to NULL once parsing finished 
-LefDataBase* lefDB = NULL; 
+/// a local temporary global variable
+/// refer to Driver::m_db everytime parsing a file
+/// reset to NULL once parsing finished
+LefDataBase* lefDB = NULL;
 int parse65nm = 0;
 int parseLef58Type = 0;
-int isSessionless = 0; 
-int relax = 0; 
+int isSessionless = 0;
+int relax = 0;
 const char* version = "N/A";
 int setVer = 0;
-int verStr = 0; 
-int msgCb = 0; 
+int verStr = 0;
+int msgCb = 0;
 char* userData = NULL;
 
-void checkType(lefrCallbackType_e c) 
+void checkType(lefrCallbackType_e c)
 {
-    if (c >= 0 && c <= lefrLibraryEndCbkType) 
+    if (c >= 0 && c <= lefrLibraryEndCbkType)
     {
         // OK
-    } 
-    else 
+    }
+    else
     {
         limboPrint(limbo::kERROR, "callback type is out of bounds!\n");
     }
@@ -58,27 +58,27 @@ void checkType(lefrCallbackType_e c)
 int antennaCB(lefrCallbackType_e c, double value, lefiUserData)
 {
     checkType(c);
-    
+
 
     switch (c)
     {
         case lefrAntennaInputCbkType:
-            lefDB->lef_antennainput_cbk(value); 
+            lefDB->lef_antennainput_cbk(value);
             break;
         case lefrAntennaInoutCbkType:
-            lefDB->lef_antennainout_cbk(value); 
+            lefDB->lef_antennainout_cbk(value);
             break;
         case lefrAntennaOutputCbkType:
-            lefDB->lef_antennaoutput_cbk(value); 
+            lefDB->lef_antennaoutput_cbk(value);
             break;
         case lefrInputAntennaCbkType:
-            lefDB->lef_inputantenna_cbk(value); 
+            lefDB->lef_inputantenna_cbk(value);
             break;
         case lefrOutputAntennaCbkType:
-            lefDB->lef_outputantenna_cbk(value); 
+            lefDB->lef_outputantenna_cbk(value);
             break;
         case lefrInoutAntennaCbkType:
-            lefDB->lef_inoutantenna_cbk(value); 
+            lefDB->lef_inoutantenna_cbk(value);
             break;
         default:
             fprintf(stderr, "BOGUS antenna type.\n");
@@ -90,15 +90,15 @@ int antennaCB(lefrCallbackType_e c, double value, lefiUserData)
 int arrayBeginCB(lefrCallbackType_e c, const char* /*name*/, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
 int arrayCB(lefrCallbackType_e c, lefiArray* a, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_array_cbk(*a); 
+
+    lefDB->lef_array_cbk(*a);
 
     return 0;
 }
@@ -106,24 +106,24 @@ int arrayCB(lefrCallbackType_e c, lefiArray* a, lefiUserData)
 int arrayEndCB(lefrCallbackType_e c, const char* /*name*/, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
 int busBitCharsCB(lefrCallbackType_e c, const char* busBit, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_busbitchars_cbk(busBit); 
+
+    lefDB->lef_busbitchars_cbk(busBit);
     return 0;
 }
 
 int caseSensCB(lefrCallbackType_e c, int caseSense, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_casesensitive_cbk(caseSense); 
+
+    lefDB->lef_casesensitive_cbk(caseSense);
     return 0;
 }
 
@@ -131,7 +131,7 @@ int fixedMaskCB(lefrCallbackType_e c, int fixedMask, lefiUserData)
 {
     checkType(c);
 
-    if (fixedMask == 1) 
+    if (fixedMask == 1)
         fprintf(stderr, "FIXEDMASK ;\n");
     return 0;
 }
@@ -139,69 +139,69 @@ int fixedMaskCB(lefrCallbackType_e c, int fixedMask, lefiUserData)
 int clearanceCB(lefrCallbackType_e c, const char* name, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_clearancemeasure_cbk(name); 
+
+    lefDB->lef_clearancemeasure_cbk(name);
     return 0;
 }
 
 int dividerCB(lefrCallbackType_e c, const char* name, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_dividerchar_cbk(name); 
+
+    lefDB->lef_dividerchar_cbk(name);
     return 0;
 }
 
 int noWireExtCB(lefrCallbackType_e c, const char* name, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_nowireextension_cbk(name); 
+
+    lefDB->lef_nowireextension_cbk(name);
     return 0;
 }
 
 int noiseMarCB(lefrCallbackType_e c, lefiNoiseMargin *data, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_noisemargin_cbk(*data); 
+
+    lefDB->lef_noisemargin_cbk(*data);
     return 0;
 }
 
 int edge1CB(lefrCallbackType_e c, double name, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_edgeratethreshold1_cbk(name); 
+
+    lefDB->lef_edgeratethreshold1_cbk(name);
     return 0;
 }
 
 int edge2CB(lefrCallbackType_e c, double name, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_edgeratethreshold2_cbk(name); 
+
+    lefDB->lef_edgeratethreshold2_cbk(name);
     return 0;
 }
 
 int edgeScaleCB(lefrCallbackType_e c, double name, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_edgeratescalefactor_cbk(name); 
+
+    lefDB->lef_edgeratescalefactor_cbk(name);
     return 0;
 }
 
 int noiseTableCB(lefrCallbackType_e c, lefiNoiseTable *table, lefiUserData)
 {
     checkType(c);
-    
+
 
     lefDB->lef_noisetable_cbk(*table);
     return 0;
@@ -210,47 +210,47 @@ int noiseTableCB(lefrCallbackType_e c, lefiNoiseTable *table, lefiUserData)
 int correctionCB(lefrCallbackType_e c, lefiCorrectionTable *table, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_correctiontable_cbk(*table); 
+
+    lefDB->lef_correctiontable_cbk(*table);
     return 0;
 }
 
 int dielectricCB(lefrCallbackType_e c, double dielectric, lefiUserData)
 {
     checkType(c);
-    
 
-    lefDB->lef_dielectric_cbk(dielectric); 
+
+    lefDB->lef_dielectric_cbk(dielectric);
     return 0;
 }
 
 int irdropBeginCB(lefrCallbackType_e c, void*, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
 int irdropCB(lefrCallbackType_e c, lefiIRDrop* irdrop, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_irdrop_cbk(*irdrop); 
+
+    lefDB->lef_irdrop_cbk(*irdrop);
     return 0;
 }
 
 int irdropEndCB(lefrCallbackType_e c, void*, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
 int layerCB(lefrCallbackType_e c, lefiLayer* layer, lefiUserData)
 {
     checkType(c);
-    
+
 
     lefrSetCaseSensitivity(0);
 
@@ -262,7 +262,7 @@ int layerCB(lefrCallbackType_e c, lefiLayer* layer, lefiUserData)
     if (parseLef58Type)
         layer->lefiLayer::parseLEF58Layer();
 
-    lefDB->lef_layer_cbk(*layer); 
+    lefDB->lef_layer_cbk(*layer);
 
     // Set it to case sensitive from here on
     lefrSetCaseSensitivity(1);
@@ -273,12 +273,12 @@ int layerCB(lefrCallbackType_e c, lefiLayer* layer, lefiUserData)
 int macroBeginCB(lefrCallbackType_e c, const char* macroName, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_macrobegin_cbk(macroName); 
+
+    lefDB->lef_macrobegin_cbk(macroName);
     return 0;
 }
 
-int macroFixedMaskCB(lefrCallbackType_e c, int, 
+int macroFixedMaskCB(lefrCallbackType_e c, int,
         lefiUserData)
 {
     checkType(c);
@@ -290,7 +290,7 @@ int macroClassTypeCB(lefrCallbackType_e c, const char* /*macroClassType*/,
         lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
@@ -298,7 +298,7 @@ int macroOriginCB(lefrCallbackType_e c, lefiNum,
         lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
@@ -306,7 +306,7 @@ int macroSizeCB(lefrCallbackType_e c, lefiNum,
         lefiUserData)
 {
     checkType(c);
-    
+
     // fprintf(stderr, "  SIZE %g BY %g ;\n", macroNum.x, macroNum.y);
     return 0;
 }
@@ -314,8 +314,8 @@ int macroSizeCB(lefrCallbackType_e c, lefiNum,
 int macroCB(lefrCallbackType_e c, lefiMacro* macro, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_macro_cbk(*macro); 
+
+    lefDB->lef_macro_cbk(*macro);
     return 0;
 }
 
@@ -324,15 +324,15 @@ int macroEndCB(lefrCallbackType_e c, const char* macroName, lefiUserData)
     checkType(c);
 
     lefDB->lef_macro_endcbk( macroName);
-    
+
     return 0;
 }
 
 int manufacturingCB(lefrCallbackType_e c, double num, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_manufacturing_cbk(num); 
+
+    lefDB->lef_manufacturing_cbk(num);
     return 0;
 }
 
@@ -340,24 +340,24 @@ int maxStackViaCB(lefrCallbackType_e c, lefiMaxStackVia* maxStack,
         lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_maxstackvia_cbk(*maxStack); 
+
+    lefDB->lef_maxstackvia_cbk(*maxStack);
     return 0;
 }
 
 int minFeatureCB(lefrCallbackType_e c, lefiMinFeature* min, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_minfeature_cbk(*min); 
+
+    lefDB->lef_minfeature_cbk(*min);
     return 0;
 }
 
 int nonDefaultCB(lefrCallbackType_e c, lefiNonDefault* def, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_nondefault_cbk(*def); 
+
+    lefDB->lef_nondefault_cbk(*def);
 
     return 0;
 }
@@ -366,25 +366,25 @@ int obstructionCB(lefrCallbackType_e c, lefiObstruction* /*obs*/,
         lefiUserData)
 {
     checkType(c);
-    
-    //lefDB->lef_obstruction_cbk(*obs); 
+
+    //lefDB->lef_obstruction_cbk(*obs);
     return 0;
 }
 
 int pinCB(lefrCallbackType_e c, lefiPin* pin, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_pin_cbk(*pin); 
-    return 0;  
+
+    lefDB->lef_pin_cbk(*pin);
+    return 0;
 }
 
 int densityCB(lefrCallbackType_e c, lefiDensity* density,
         lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_density_cbk(*density); 
+
+    lefDB->lef_density_cbk(*density);
     return 0;
 }
 
@@ -392,67 +392,67 @@ int propDefBeginCB(lefrCallbackType_e c, void*, lefiUserData)
 {
 
     checkType(c);
-    
+
     return 0;
 }
 
 int propDefCB(lefrCallbackType_e c, lefiProp* prop, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_prop_cbk(*prop); 
+
+    lefDB->lef_prop_cbk(*prop);
     return 0;
 }
 
 int propDefEndCB(lefrCallbackType_e c, void*, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
 int siteCB(lefrCallbackType_e c, lefiSite* site, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_site_cbk(*site); 
+
+    lefDB->lef_site_cbk(*site);
     return 0;
 }
 
 int spacingBeginCB(lefrCallbackType_e c, void*, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
 int spacingCB(lefrCallbackType_e c, lefiSpacing* spacing, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_spacing_cbk(*spacing); 
+
+    lefDB->lef_spacing_cbk(*spacing);
     return 0;
 }
 
 int spacingEndCB(lefrCallbackType_e c, void*, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
 int timingCB(lefrCallbackType_e c, lefiTiming* timing, lefiUserData)
 {
     checkType(c);
-    lefDB->lef_timing_cbk(*timing); 
+    lefDB->lef_timing_cbk(*timing);
     return 0;
 }
 
 int unitsCB(lefrCallbackType_e c, lefiUnits* unit, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_units_cbk(*unit); 
+
+    lefDB->lef_units_cbk(*unit);
     return 0;
 }
 
@@ -460,55 +460,55 @@ int useMinSpacingCB(lefrCallbackType_e c, lefiUseMinSpacing* spacing,
         lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_useminspacing_cbk(*spacing); 
+
+    lefDB->lef_useminspacing_cbk(*spacing);
     return 0;
 }
 
 int versionCB(lefrCallbackType_e c, double num, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_version_cbk(num); 
+
+    lefDB->lef_version_cbk(num);
     return 0;
 }
 
 int versionStrCB(lefrCallbackType_e c, const char* versionName, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_version_cbk(versionName); 
+
+    lefDB->lef_version_cbk(versionName);
     return 0;
 }
 
 int viaCB(lefrCallbackType_e c, lefiVia* via, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_via_cbk(*via); 
+
+    lefDB->lef_via_cbk(*via);
     return 0;
 }
 
 int viaRuleCB(lefrCallbackType_e c, lefiViaRule* viaRule, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_viarule_cbk(*viaRule); 
+
+    lefDB->lef_viarule_cbk(*viaRule);
     return 0;
 }
 
 int extensionCB(lefrCallbackType_e c, const char* extsn, lefiUserData)
 {
     checkType(c);
-    
-    lefDB->lef_extension_cbk(extsn); 
+
+    lefDB->lef_extension_cbk(extsn);
     return 0;
 }
 
 int doneCB(lefrCallbackType_e c, void*, lefiUserData)
 {
     checkType(c);
-    
+
     return 0;
 }
 
@@ -553,15 +553,15 @@ bool Driver::parse_file(const std::string &filename)
 {
     parse65nm = 0;
     parseLef58Type = 0;
-    isSessionless = 0; 
-    relax = 0; 
+    isSessionless = 0;
+    relax = 0;
     version = "N/A";
     setVer = 0;
-    verStr = 1; 
-    msgCb = 0; 
+    verStr = 1;
+    msgCb = 0;
     userData = strdup ("(lefrw-5100)");
 
-    if (isSessionless) 
+    if (isSessionless)
     {
         lefrSetOpenLogFileAppend();
     }
@@ -594,7 +594,7 @@ bool Driver::parse_file(const std::string &filename)
     lefrSetIRDropCbk(irdropCB);
     lefrSetIRDropEndCbk(irdropEndCB);
     lefrSetLayerCbk(layerCB);
-    lefrSetLibraryEndCbk(doneCB); 
+    lefrSetLibraryEndCbk(doneCB);
     lefrSetMacroBeginCbk(macroBeginCB);
     lefrSetMacroCbk(macroCB);
     lefrSetMacroClassTypeCbk(macroClassTypeCB);
@@ -682,23 +682,23 @@ bool Driver::parse_file(const std::string &filename)
     lefrSetViaWarnings(30);
 
 
-    lefrReset(); 
-    FILE* f = fopen(filename.c_str(), "r"); 
+    lefrReset();
+    FILE* f = fopen(filename.c_str(), "r");
     if (!f)
     {
-        std::cerr << "Could not open input file " << filename << "\n"; 
-        return false; 
+        std::cerr << "Could not open input file " << filename << "\n";
+        return false;
     }
     (void)lefrEnableReadEncrypted();
 
-    // set lefDB 
-    lefDB = &m_db; 
-    // kernel to read lef file 
+    // set lefDB
+    lefDB = &m_db;
+    // kernel to read lef file
     int res = lefrRead(f, filename.c_str(), (void*)userData);
-    // reset to NULL 
-    lefDB = NULL; 
+    // reset to NULL
+    lefDB = NULL;
     if (res)
-        std::cerr << "Reader returns bad status\n"; 
+        std::cerr << "Reader returns bad status\n";
 
     (void)lefrPrintUnusedCallbacks(stderr);
     (void)lefrReleaseNResetMemory();
@@ -763,11 +763,11 @@ bool Driver::parse_file(const std::string &filename)
     void lefrUnsetViaCbk();
     void lefrUnsetViaRuleCbk();
 
-    lefrClear(); 
-    fclose(f); 
-    free(userData); 
+    lefrClear();
+    fclose(f);
+    free(userData);
 
-    return true; 
+    return true;
 }
 
 bool read(LefDataBase& db, const string& lefFile)

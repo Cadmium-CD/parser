@@ -8,7 +8,7 @@
 #include "LefDriver.h"
 #include <boost/algorithm/string.hpp>
 //#include "config.h"
-//#include "RawDatabase.h"
+#include "RawDataBase.h"
 
 PROJECT_NAMESPACE_BEGIN
     class LefReader : public LefParser::LefDataBase {

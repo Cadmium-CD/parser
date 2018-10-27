@@ -1,6 +1,6 @@
 /**
  * @file   DefDataBase.h
- * @brief  Database for Def parser 
+ * @brief  Database for Def parser
  * @author Yibo Lin
  * @date   Oct 2014
  */
@@ -34,8 +34,8 @@ namespace DefParser {
     typedef long int64_t;
 /// @endnowarn
 
-/// @brief Temporary data structures to hold parsed data. 
-/// Base class for all temporary data structures. 
+/// @brief Temporary data structures to hold parsed data.
+/// Base class for all temporary data structures.
     struct Item
     {
         /// print data members
@@ -61,7 +61,7 @@ namespace DefParser {
             return ss;
         }
     };
-/// @brief placement row 
+/// @brief placement row
     struct Row : public Item
     {
         string row_name; ///< row name
@@ -91,7 +91,7 @@ namespace DefParser {
                << "step = " << step[0] << " " << step[1] << endl;
         }
     };
-/// @brief cell in placement 
+/// @brief cell in placement
     struct Component : public Item
     {
         string comp_name; ///< component name
@@ -121,7 +121,7 @@ namespace DefParser {
                << "orient = " << orient << endl;
         }
     };
-/// @brief pin of node/cell 
+/// @brief pin of node/cell
     struct Pin : public Item
     {
         string pin_name; ///< pin name
@@ -158,7 +158,7 @@ namespace DefParser {
             ss << "use = " << use << endl;
         }
     };
-/// @brief net to describe interconnection of netlist 
+/// @brief net to describe interconnection of netlist
     struct Net : public Item
     {
         string net_name; ///< net name
@@ -333,45 +333,45 @@ namespace DefParser {
     };
 // forward declaration
 /// @class DefParser::DefDataBase
-/// @brief Base class for def database. 
-/// Only pure virtual functions are defined.  
-/// User needs to inheritate this class and derive a custom database type with all callback functions defined.  
+/// @brief Base class for def database.
+/// Only pure virtual functions are defined.
+/// User needs to inheritate this class and derive a custom database type with all callback functions defined.
     class DefDataBase
     {
     public:
-        /// @brief set divider characters 
+        /// @brief set divider characters
         virtual void set_def_dividerchar(string const&) = 0;
-        /// @brief set BUS bit characters 
+        /// @brief set BUS bit characters
         virtual void set_def_busbitchars(string const&) = 0;
-        /// @brief set DEF version 
+        /// @brief set DEF version
         virtual void set_def_version(string const&) = 0;
-        /// @brief set design name 
+        /// @brief set design name
         virtual void set_def_design(string const&) = 0;
-        /// @brief set DEF unit 
+        /// @brief set DEF unit
         virtual void set_def_unit(int) = 0;
         /// @brief set die area xl, yl, xh, yh
         virtual void set_def_diearea(int, int, int, int) = 0;
-        /// @brief add row 
+        /// @brief add row
         virtual void add_def_row(Row const&) = 0;
-        /// @brief add component/cell 
+        /// @brief add component/cell
         virtual void add_def_component(Component const&) = 0;
-        /// @brief add component/cell 
+        /// @brief add component/cell
         virtual void resize_def_component(int) = 0;
-        /// @brief add pin 
+        /// @brief add pin
         virtual void add_def_pin(Pin const&) = 0;
-        /// @brief set number of pins 
+        /// @brief set number of pins
         virtual void resize_def_pin(int)  = 0;
-        /// @brief add net 
+        /// @brief add net
         virtual void add_def_net(Net const&) = 0;
-        /// @brief set number of nets 
+        /// @brief set number of nets
         virtual void resize_def_net(int) = 0;
-        // check these callbacks at runtime 
-        /// @brief set number of blockages 
+        // check these callbacks at runtime
+        /// @brief set number of blockages
         virtual void resize_def_blockage(int);
         /// @brief add placement blockages, array of boxes with xl, yl, xh, yh
         virtual void add_def_placement_blockage(std::vector<std::vector<int> > const&);
-        /// @brief end of design 
-        virtual void end_def_design(); 
+        /// @brief end of design
+        virtual void end_def_design();
         ///
         virtual void add_def_track(Track const&) = 0;
         virtual void add_def_snetpath(Snetp const&) = 0;
@@ -383,8 +383,8 @@ namespace DefParser {
         virtual void add_def_via(Via const &) = 0;
 
     protected:
-        /// @brief remind users to define some optional callback functions at runtime 
-        /// @param str message including the information to the callback function in the reminder 
+        /// @brief remind users to define some optional callback functions at runtime
+        /// @param str message including the information to the callback function in the reminder
         void def_user_cbk_reminder(const char* str) const;
     };
 
