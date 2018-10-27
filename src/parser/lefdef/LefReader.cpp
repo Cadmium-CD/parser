@@ -329,7 +329,7 @@ PROJECT_NAMESPACE_BEGIN
 
     }
 
-    void readLef(std::string const &fileName, RawDatabase &db) {
+    void readLef(std::string const &fileName, MacroDataBase &db) {
         LefReader reader = LefReader(db);
         LefParser::read(reader, fileName.c_str());
         //db =reader.getDb();

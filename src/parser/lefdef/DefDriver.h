@@ -1,6 +1,6 @@
 /**
  * @file   DefDriver.h
- * @brief  Driver for Def parser 
+ * @brief  Driver for Def parser
  * @author Yibo Lin
  * @date   Oct 2014
  */
@@ -18,13 +18,13 @@ namespace DefParser {
 using std::cout;
 using std::endl;
 using std::cerr;
-using std::string; 
+using std::string;
 using std::vector;
 using std::pair;
 using std::make_pair;
 using std::ostringstream;
 
-/** 
+/**
  * @class DefParser::Driver
  * The Driver class brings together all components. It creates an instance of
  * the Parser and Scanner classes and connects them. Then the input stream is
@@ -36,7 +36,7 @@ class Driver
 {
 public:
     /// construct a new parser driver context
-    /// @param db reference to database 
+    /// @param db reference to database
     Driver(DefDataBase& db);
 
     /// enable debug output in the flex scanner
@@ -71,8 +71,8 @@ public:
      */
     bool parse_file(const string& filename);
 
-    /// accessors for temporary data members 
-    /// @cond 
+    /// accessors for temporary data members
+    /// @cond
     Row const& row() const {return m_row;}
     Row& row() {return m_row;}
     Component const& component() const {return m_comp;}
@@ -93,19 +93,19 @@ public:
     Via const &via() const { return m_via; }
 
     Via &via() { return m_via; }
-    /// @endcond 
+    /// @endcond
 protected:
     /** Reference to the database filled during parsing of the
      * expressions. */
     DefDataBase& m_db;
 
-    /// @brief temporary row 
+    /// @brief temporary row
 	Row m_row;
-    /// @brief temporary component 
+    /// @brief temporary component
 	Component m_comp;
-    /// @brief temporary pin 
+    /// @brief temporary pin
 	Pin m_pin;
-    /// @brief temporary net 
+    /// @brief temporary net
 	Net m_net;
 
     Track m_track;
@@ -119,10 +119,10 @@ protected:
     Via m_via;
 };
 
-/// @brief API for DefParser. 
-/// Read DEF file and initialize database by calling user-defined callback functions. 
+/// @brief API for DefParser.
+/// Read DEF file and initialize database by calling user-defined callback functions.
 /// @param db database which is derived from @ref DefParser::DefDataBase
-/// @param defFile DEF file 
+/// @param defFile DEF file
 bool read(DefDataBase& db, const string& defFile);
 
 } // namespace example

@@ -8,47 +8,47 @@ PROJECT_NAMESPACE_BEGIN
 /// Override functions
 //////////////////////////////
 
-void LefReader::lef_version_cbk(const std::string &v) 
+void LefReader::lef_version_cbk(const std::string &v)
 {
     _techDB.setVersion(v);
 }
 
-void LefReader::lef_version_cbk(double v) 
+void LefReader::lef_version_cbk(double v)
 {
 
 }
 
-void LefReader::lef_dividerchar_cbk(const std::string &v) 
+void LefReader::lef_dividerchar_cbk(const std::string &v)
 {
     _techDB.setDividChar(v);
 }
 
-void LefReader::lef_casesensitive_cbk(int v) 
+void LefReader::lef_casesensitive_cbk(int v)
 {
 
 }
 
-void LefReader::lef_nowireextension_cbk(const std::string &v) 
+void LefReader::lef_nowireextension_cbk(const std::string &v)
 {
 
 }
 
-void LefReader::lef_manufacturing_cbk(double v) 
+void LefReader::lef_manufacturing_cbk(double v)
 {
     _techDB.setManufacturingGrid(v);
 }
 
-void LefReader::lef_useminspacing_cbk(lefiUseMinSpacing const &v) 
+void LefReader::lef_useminspacing_cbk(lefiUseMinSpacing const &v)
 {
 
 }
 
-void LefReader::lef_clearancemeasure_cbk(const std::string &v) 
+void LefReader::lef_clearancemeasure_cbk(const std::string &v)
 {
     _techDB.setClearanceMeasure(v);
 }
 
-void LefReader::lef_units_cbk(lefiUnits const &v) 
+void LefReader::lef_units_cbk(lefiUnits const &v)
 {
     _techDB.units() = LefUnit();
     auto &units = _techDB.units();
@@ -95,12 +95,12 @@ void LefReader::lef_units_cbk(lefiUnits const &v)
     }
 }
 
-void LefReader::lef_busbitchars_cbk(const std::string &v) 
+void LefReader::lef_busbitchars_cbk(const std::string &v)
 {
     _techDB.setBusBitChars(v);
 }
 
-void LefReader::lef_layer_cbk(lefiLayer &v) 
+void LefReader::lef_layer_cbk(lefiLayer &v)
 {
     if (v.hasType())
     {
@@ -152,12 +152,12 @@ void LefReader::lef_layer_cbk(lefiLayer &v)
     }
 }
 
-void LefReader::lef_maxstackvia_cbk(lefiMaxStackVia const &v) 
+void LefReader::lef_maxstackvia_cbk(lefiMaxStackVia const &v)
 {
 
 }
 
-void LefReader::lef_via_cbk(lefiVia const &v) 
+void LefReader::lef_via_cbk(lefiVia const &v)
 {
     if (v.hasGenerated())
     {
@@ -168,32 +168,32 @@ void LefReader::lef_via_cbk(lefiVia const &v)
     }
 }
 
-void LefReader::lef_viarule_cbk(lefiViaRule const &v) 
+void LefReader::lef_viarule_cbk(lefiViaRule const &v)
 {
 
 }
 
-void LefReader::lef_spacing_cbk(lefiSpacing const &v) 
+void LefReader::lef_spacing_cbk(lefiSpacing const &v)
 {
     /// NDR?
 }
 
-void LefReader::lef_irdrop_cbk(lefiIRDrop const &v) 
+void LefReader::lef_irdrop_cbk(lefiIRDrop const &v)
 {
 
 }
 
-void LefReader::lef_minfeature_cbk(lefiMinFeature const &v) 
+void LefReader::lef_minfeature_cbk(lefiMinFeature const &v)
 {
 
 }
 
-void LefReader::lef_dielectric_cbk(double v) 
+void LefReader::lef_dielectric_cbk(double v)
 {
 
 }
 
-void LefReader::lef_nondefault_cbk(lefiNonDefault const &v) 
+void LefReader::lef_nondefault_cbk(lefiNonDefault const &v)
 {
 
 }
@@ -204,96 +204,96 @@ void LefReader::lef_site_cbk(lefiSite const &v)
     ///TODO:
 }
 
-void LefReader::lef_macrobegin_cbk(std::string const &v) 
+void LefReader::lef_macrobegin_cbk(std::string const &v)
 {
     ///TODO
 }
 
-void LefReader::lef_macro_cbk(lefiMacro const &v) 
+void LefReader::lef_macro_cbk(lefiMacro const &v)
 {
     /// TODO
 }
 
-void LefReader::lef_pin_cbk(lefiPin const &v) 
+void LefReader::lef_pin_cbk(lefiPin const &v)
 {
     ///TODO:
 }
 
-void LefReader::lef_obstruction_cbk(lefiObstruction const &v) 
+void LefReader::lef_obstruction_cbk(lefiObstruction const &v)
 {
     ///TODO:
 }
 
-void LefReader::lef_density_cbk(lefiDensity const &v) 
+void LefReader::lef_density_cbk(lefiDensity const &v)
 {
 }
 
-void LefReader::lef_timing_cbk(lefiTiming const &v) 
+void LefReader::lef_timing_cbk(lefiTiming const &v)
 {
 }
 
-void LefReader::lef_array_cbk(lefiArray const &v) 
+void LefReader::lef_array_cbk(lefiArray const &v)
 {
 }
 
-void LefReader::lef_prop_cbk(lefiProp const &v) 
+void LefReader::lef_prop_cbk(lefiProp const &v)
 {
     /// TODO:
 }
 
-void LefReader::lef_noisemargin_cbk(lefiNoiseMargin const &v) 
+void LefReader::lef_noisemargin_cbk(lefiNoiseMargin const &v)
 {
 }
 
-void LefReader::lef_edgeratethreshold1_cbk(double v) 
+void LefReader::lef_edgeratethreshold1_cbk(double v)
 {
 }
 
-void LefReader::lef_edgeratethreshold2_cbk(double v) 
+void LefReader::lef_edgeratethreshold2_cbk(double v)
 {
 }
 
-void LefReader::lef_edgeratescalefactor_cbk(double v) 
+void LefReader::lef_edgeratescalefactor_cbk(double v)
 {
 }
 
-void LefReader::lef_noisetable_cbk(lefiNoiseTable const &v) 
+void LefReader::lef_noisetable_cbk(lefiNoiseTable const &v)
 {
 }
 
-void LefReader::lef_correctiontable_cbk(lefiCorrectionTable const &v) 
+void LefReader::lef_correctiontable_cbk(lefiCorrectionTable const &v)
 {
 }
 
-void LefReader::lef_inputantenna_cbk(double v) 
+void LefReader::lef_inputantenna_cbk(double v)
 {
 }
 
-void LefReader::lef_outputantenna_cbk(double v) 
+void LefReader::lef_outputantenna_cbk(double v)
 {
 }
 
-void LefReader::lef_inoutantenna_cbk(double v) 
+void LefReader::lef_inoutantenna_cbk(double v)
 {
 }
 
-void LefReader::lef_antennainput_cbk(double v) 
+void LefReader::lef_antennainput_cbk(double v)
 {
 }
 
-void LefReader::lef_antennaoutput_cbk(double v) 
+void LefReader::lef_antennaoutput_cbk(double v)
 {
 }
 
-void LefReader::lef_antennainout_cbk(double v) 
+void LefReader::lef_antennainout_cbk(double v)
 {
 }
 
-void LefReader::lef_extension_cbk(const std::string &v) 
+void LefReader::lef_extension_cbk(const std::string &v)
 {
 }
 
-void LefReader::lef_macro_endcbk(const char *macroName) 
+void LefReader::lef_macro_endcbk(const char *macroName)
 {
     /// TODO
 }
@@ -301,7 +301,7 @@ void LefReader::lef_macro_endcbk(const char *macroName)
 ///////////////////////////////
 /// Local defined functions
 ///////////////////////////////
-IndexType LefReader::parseCutLayer(lefiLayer const &v) 
+IndexType LefReader::parseCutLayer(lefiLayer const &v)
 {
     LefLayerCut cut = LefLayerCut();
     cut.name = std::string(v.name());
@@ -313,7 +313,7 @@ IndexType LefReader::parseCutLayer(lefiLayer const &v)
         //cut.spacing = v.spacing(spacingIdx);
         cut.spacing = v.spacing(0);
     }
-    /// Return index of this in the cut layers 
+    /// Return index of this in the cut layers
     IndexType cutIdx = _techDB.cutLayers().size();
     _techDB.cutLayers().emplace_back(cut);
     return cutIdx;
@@ -385,7 +385,7 @@ IndexType LefReader::parseRoutingLayer(lefiLayer &v)
 
     ///spacing table
     route.numSpacingTable = v.numSpacingTable();
-    
+
     for (IntType idx = 0; idx < route.numSpacingTable; ++idx)
     {
         const auto &spTable = v.spacingTable(idx);
@@ -398,7 +398,7 @@ IndexType LefReader::parseRoutingLayer(lefiLayer &v)
             AssertMsg(false, "%s: expect no influence \n", __FUNCTION__);
         }
         /// Spacingtable can only be influence, parallel, and twoWidth
-        else 
+        else
         {
             for (IntType twoWidthIdx = 0; twoWidthIdx < spTable->twoWidths()->numWidth(); ++twoWidthIdx)
             {
@@ -407,7 +407,7 @@ IndexType LefReader::parseRoutingLayer(lefiLayer &v)
         }
         /// twoWidth
     }
-    
+
     ///Return the index of the input in the routing layers
     IndexType routingIdx = _techDB.routingLayers().size();
     _techDB.routingLayers().emplace_back(route);
@@ -434,7 +434,7 @@ void LefReader::processRoutingLayerSpacing(LefLayerRouting &route, lefiLayer con
         route.eolSpacing.emplace_back(EOLSpacing(v.spacing(spacingIdx), v.spacingEolWidth(spacingIdx), v.spacingEolWithin(spacingIdx)));
     }
     /// others...
-    else 
+    else
     {
         /// raw spacing...
         route.spacing.emplace_back(v.spacing(spacingIdx));
@@ -465,7 +465,7 @@ void LefReader::processRoutingLayerSpacingTableParallel(LefLayerRouting &route, 
 IndexType LefReader::parseMastersliceLayer(const lefiLayer &v)
 {
     LefLayerMasterslice masterslice = LefLayerMasterslice();
-    
+
     masterslice.name = v.name();
     IndexType masterIdx = _techDB.mastersliceLayers().size();
     _techDB.mastersliceLayers().emplace_back(masterslice);
@@ -523,7 +523,7 @@ void LefReader::parseFixedVia(const lefiVia &v)
         yHi = v.yh(1, cutRectIdx);
         via.cutLayerRectArray.emplace_back(Box<RealType>(xLo, yLo, xHi, yHi));
     }
-    
+
     /// top
     via.topLayer = v.layerName(2);
     AssertMsg(v.numRects(2) == 1, "%s: VIA %s top layer does not have exactly one rectangle! \n", __FUNCTION__, v.name());
@@ -587,7 +587,7 @@ void LefReader::postProcessFixedVia(const LefRawFixedVia &rawVia)
     via.setBottomLayerIdx(_techDB.mapLayerStr2Idx()[rawVia.bottomLayer]);
     via.setCutLayerIdx(_techDB.mapLayerStr2Idx()[rawVia.cutLayer]);
     via.setTopLayerIdx(_techDB.mapLayerStr2Idx()[rawVia.topLayer]);
-    
+
     /// Convert rect unit from um to databse unit
     LocType xLo;
     LocType yLo;

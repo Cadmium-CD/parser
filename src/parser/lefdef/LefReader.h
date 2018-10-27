@@ -8,7 +8,7 @@
 #include "LefDriver.h"
 //#include <boost/algorithm/string.hpp>
 //#include "config.h"
-#include "RawDataBase.h"
+#include "RawDataBase2.h"
 
 PROJECT_NAMESPACE_BEGIN
     class LefReader : public LefParser::LefDataBase {
@@ -18,7 +18,7 @@ PROJECT_NAMESPACE_BEGIN
          */
         //LefReader() = default;
 
-        explicit LefReader(RawDatabase &db)
+        explicit LefReader(MacroDataBase &db)
                 : _db(db) {
             //_db = db;
             currentMacroName = "";
@@ -27,14 +27,14 @@ PROJECT_NAMESPACE_BEGIN
         /*
          * Getter
          */
-        const RawDatabase &getDb() const {
+        const MacroDataBase &getDb() const {
             return _db;
         }
 
         /*
          * Setter
          */
-        void setDb(const RawDatabase &_db) {
+        void setDb(const MacroDataBase &_db) {
             LefReader::_db = _db;
         }
 
@@ -130,10 +130,10 @@ PROJECT_NAMESPACE_BEGIN
 
 
     private:
-        RawDatabase &_db;
+        MacroDataBase &_db;
         std::string currentMacroName = "";
     };
-    void readLef(std::string const &fileName, RawDatabase &db);
+    void readLef(std::string const &fileName, MacroDataBase &db);
 PROJECT_NAME_SPACE_END
 
 #endif //MIXEDSTACKLEGALIZATION_LEFREADER_H
