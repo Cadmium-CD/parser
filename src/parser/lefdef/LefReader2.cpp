@@ -20,7 +20,7 @@ void LefReader::lef_version_cbk(double v)
 
 void LefReader::lef_dividerchar_cbk(const std::string &v)
 {
-    _techDB.setDividChar(v);
+    _techDB.setDivideChar(v);
 }
 
 void LefReader::lef_casesensitive_cbk(int v)
@@ -55,7 +55,7 @@ void LefReader::lef_units_cbk(lefiUnits const &v)
     if (v.hasDatabase())
     {
         units.hasDatabase = true;
-        units.datarbaseName = v.databaseName();
+        units.databaseName = v.databaseName();
         units.databaseNumber = v.databaseNumber();
     }
     if (v.hasCapacitance())
