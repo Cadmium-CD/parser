@@ -46,17 +46,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/yi/Utexas/CAD/CAD/parser
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/yi/Utexas/CAD/CAD/parser
-=======
-CMAKE_SOURCE_DIR = /home/cadmium/CAD_project/parser
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cadmium/CAD_project/parser
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ARouter.dir/depend.make
@@ -69,7 +62,6 @@ include CMakeFiles/ARouter.dir/flags.make
 
 CMakeFiles/ARouter.dir/src/main/main.cpp.o: CMakeFiles/ARouter.dir/flags.make
 CMakeFiles/ARouter.dir/src/main/main.cpp.o: src/main/main.cpp
-<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yi/Utexas/CAD/CAD/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ARouter.dir/src/main/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/main/main.cpp.o -c /home/yi/Utexas/CAD/CAD/parser/src/main/main.cpp
 
@@ -85,42 +77,6 @@ CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o: CMakeFiles/ARouter.di
 CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o: src/parser/lefdef/DefDataBase.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yi/Utexas/CAD/CAD/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o -c /home/yi/Utexas/CAD/CAD/parser/src/parser/lefdef/DefDataBase.cc
-=======
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ARouter.dir/src/main/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/main/main.cpp.o -c /home/cadmium/CAD_project/parser/src/main/main.cpp
-
-CMakeFiles/ARouter.dir/src/main/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/main/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/main/main.cpp > CMakeFiles/ARouter.dir/src/main/main.cpp.i
-
-CMakeFiles/ARouter.dir/src/main/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/main/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/main/main.cpp -o CMakeFiles/ARouter.dir/src/main/main.cpp.s
-
-CMakeFiles/ARouter.dir/src/main/main.cpp.o.requires:
-
-.PHONY : CMakeFiles/ARouter.dir/src/main/main.cpp.o.requires
-
-CMakeFiles/ARouter.dir/src/main/main.cpp.o.provides: CMakeFiles/ARouter.dir/src/main/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/ARouter.dir/build.make CMakeFiles/ARouter.dir/src/main/main.cpp.o.provides.build
-.PHONY : CMakeFiles/ARouter.dir/src/main/main.cpp.o.provides
-
-CMakeFiles/ARouter.dir/src/main/main.cpp.o.provides.build: CMakeFiles/ARouter.dir/src/main/main.cpp.o
-
-
-CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o: CMakeFiles/ARouter.dir/flags.make
-CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o: src/util/MsgPrinter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o -c /home/cadmium/CAD_project/parser/src/util/MsgPrinter.cpp
-
-CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/util/MsgPrinter.cpp > CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.i
-
-CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/util/MsgPrinter.cpp -o CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.s
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 
 CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.i"
@@ -143,33 +99,8 @@ CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yi/Utexas/CAD/CAD/parser/src/parser/lefdef/DefDriver.cc -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.s
 
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o: CMakeFiles/ARouter.dir/flags.make
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o: src/parser/lefdef/LefReader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o -c /home/cadmium/CAD_project/parser/src/parser/lefdef/LefReader.cpp
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/parser/lefdef/LefReader.cpp > CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.i
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/parser/lefdef/LefReader.cpp -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.s
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.requires:
-
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.requires
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.provides: CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.requires
-	$(MAKE) -f CMakeFiles/ARouter.dir/build.make CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.provides.build
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.provides
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.provides.build: CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o
-
-
 CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o: CMakeFiles/ARouter.dir/flags.make
 CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o: src/parser/lefdef/DefReader.cpp
-<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yi/Utexas/CAD/CAD/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o -c /home/yi/Utexas/CAD/CAD/parser/src/parser/lefdef/DefReader.cpp
 
@@ -185,66 +116,6 @@ CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o: CMakeFiles/ARouter.di
 CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o: src/parser/lefdef/LefDataBase.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yi/Utexas/CAD/CAD/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o -c /home/yi/Utexas/CAD/CAD/parser/src/parser/lefdef/LefDataBase.cc
-=======
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o -c /home/cadmium/CAD_project/parser/src/parser/lefdef/DefReader.cpp
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/parser/lefdef/DefReader.cpp > CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.i
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/parser/lefdef/DefReader.cpp -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.s
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.requires:
-
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.requires
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.provides: CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.requires
-	$(MAKE) -f CMakeFiles/ARouter.dir/build.make CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.provides.build
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.provides
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.provides.build: CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o
-
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o: CMakeFiles/ARouter.dir/flags.make
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o: src/parser/lefdef/LefDataBase.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o -c /home/cadmium/CAD_project/parser/src/parser/lefdef/LefDataBase.cc
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/parser/lefdef/LefDataBase.cc > CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.i
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/parser/lefdef/LefDataBase.cc -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.s
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.requires:
-
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.requires
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.provides: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.requires
-	$(MAKE) -f CMakeFiles/ARouter.dir/build.make CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.provides.build
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.provides
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.provides.build: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o
-
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o: CMakeFiles/ARouter.dir/flags.make
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o: src/parser/lefdef/DefDataBase.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o -c /home/cadmium/CAD_project/parser/src/parser/lefdef/DefDataBase.cc
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/parser/lefdef/DefDataBase.cc > CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.i
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/parser/lefdef/DefDataBase.cc -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.s
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 
 CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.i"
@@ -267,7 +138,6 @@ CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yi/Utexas/CAD/CAD/parser/src/parser/lefdef/LefDriver.cc -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.s
 
-<<<<<<< HEAD
 CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o: CMakeFiles/ARouter.dir/flags.make
 CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o: src/parser/lefdef/LefReader.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yi/Utexas/CAD/CAD/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o"
@@ -280,46 +150,6 @@ CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.i: cmake_force
 CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yi/Utexas/CAD/CAD/parser/src/parser/lefdef/LefReader.cpp -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.s
-=======
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o: CMakeFiles/ARouter.dir/flags.make
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o: src/parser/lefdef/LefDriver.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o -c /home/cadmium/CAD_project/parser/src/parser/lefdef/LefDriver.cc
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/parser/lefdef/LefDriver.cc > CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.i
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/parser/lefdef/LefDriver.cc -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.s
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.requires:
-
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.requires
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.provides: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.requires
-	$(MAKE) -f CMakeFiles/ARouter.dir/build.make CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.provides.build
-.PHONY : CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.provides
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.provides.build: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o
-
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o: CMakeFiles/ARouter.dir/flags.make
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o: src/parser/lefdef/DefDriver.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o -c /home/cadmium/CAD_project/parser/src/parser/lefdef/DefDriver.cc
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cadmium/CAD_project/parser/src/parser/lefdef/DefDriver.cc > CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.i
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cadmium/CAD_project/parser/src/parser/lefdef/DefDriver.cc -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.s
-
-CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o.requires:
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 
 CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o: CMakeFiles/ARouter.dir/flags.make
 CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o: src/util/MsgPrinter.cpp
@@ -337,7 +167,6 @@ CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.s: cmake_force
 # Object files for target ARouter
 ARouter_OBJECTS = \
 "CMakeFiles/ARouter.dir/src/main/main.cpp.o" \
-<<<<<<< HEAD
 "CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o" \
 "CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o" \
 "CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o" \
@@ -345,29 +174,12 @@ ARouter_OBJECTS = \
 "CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o" \
 "CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o" \
 "CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o"
-=======
-"CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o" \
-"CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o" \
-"CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o" \
-"CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o" \
-"CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o" \
-"CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o" \
-"CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o"
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 
 # External object files for target ARouter
 ARouter_EXTERNAL_OBJECTS =
 
 bin/ARouter: CMakeFiles/ARouter.dir/src/main/main.cpp.o
-<<<<<<< HEAD
-=======
-bin/ARouter: CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o
-bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o
-bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o
-bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o
-bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o
 bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o
 bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o
 bin/ARouter: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o
@@ -384,11 +196,7 @@ bin/ARouter: lib/libdefzlib.a
 bin/ARouter: lib/liblef.a
 bin/ARouter: lib/liblefzlib.a
 bin/ARouter: CMakeFiles/ARouter.dir/link.txt
-<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yi/Utexas/CAD/CAD/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable bin/ARouter"
-=======
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cadmium/CAD_project/parser/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable bin/ARouter"
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ARouter.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -396,29 +204,11 @@ CMakeFiles/ARouter.dir/build: bin/ARouter
 
 .PHONY : CMakeFiles/ARouter.dir/build
 
-<<<<<<< HEAD
-=======
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/main/main.cpp.o.requires
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o.requires
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o.requires
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o.requires
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o.requires
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o.requires
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o.requires
-CMakeFiles/ARouter.dir/requires: CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o.requires
-
-.PHONY : CMakeFiles/ARouter.dir/requires
-
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 CMakeFiles/ARouter.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/ARouter.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/ARouter.dir/clean
 
 CMakeFiles/ARouter.dir/depend:
-<<<<<<< HEAD
 	cd /home/yi/Utexas/CAD/CAD/parser && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yi/Utexas/CAD/CAD/parser /home/yi/Utexas/CAD/CAD/parser /home/yi/Utexas/CAD/CAD/parser /home/yi/Utexas/CAD/CAD/parser /home/yi/Utexas/CAD/CAD/parser/CMakeFiles/ARouter.dir/DependInfo.cmake --color=$(COLOR)
-=======
-	cd /home/cadmium/CAD_project/parser && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cadmium/CAD_project/parser /home/cadmium/CAD_project/parser /home/cadmium/CAD_project/parser /home/cadmium/CAD_project/parser /home/cadmium/CAD_project/parser/CMakeFiles/ARouter.dir/DependInfo.cmake --color=$(COLOR)
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 .PHONY : CMakeFiles/ARouter.dir/depend
 

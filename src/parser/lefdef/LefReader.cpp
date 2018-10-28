@@ -9,7 +9,7 @@
 
 
     void LefReader::lef_version_cbk(const std::string &v) {
-
+    _db.setVersion(v);
     }
 
     void LefReader::lef_version_cbk(double v) {
@@ -17,7 +17,7 @@
     }
 
     void LefReader::lef_dividerchar_cbk(const std::string &v) {
-
+    _db.setDivideChar(v);
     }
 
     void LefReader::lef_casesensitive_cbk(int v) {
@@ -29,7 +29,7 @@
     }
 
     void LefReader::lef_manufacturing_cbk(double v) {
-
+    _db.setManufacturingGrid(v);
     }
 
     void LefReader::lef_useminspacing_cbk(lefiUseMinSpacing const &v) {
@@ -37,19 +37,108 @@
     }
 
     void LefReader::lef_clearancemeasure_cbk(const std::string &v) {
-
+    _db.setClearanceMeasure(v);
     }
 
     void LefReader::lef_units_cbk(lefiUnits const &v) {
-
+      _db.units() = LefUnit();
+      auto &units = _db.units();
+      if (v.hasDatabase())
+      {
+          units.hasDatabase = true;
+          units.databaseName = v.databaseName();
+          units.databaseNumber = v.databaseNumber();
+      }
+      if (v.hasCapacitance())
+      {
+          units.hasCapacitance = true;
+          units.capacitance = v.capacitance();
+      }
+      if (v.hasResistance())
+      {
+          units.hasResistance = true;
+          units.resistance = v.resistance();
+      }
+      if (v.hasTime())
+      {
+          units.hasTime = true;
+          units.time = v.time();
+      }
+      if (v.hasPower())
+      {
+          units.hasPower = true;
+          units.power = v.power();
+      }
+      if (v.hasCurrent())
+      {
+          units.hasCurrent = true;
+          units.current = v.current();
+      }
+      if (v.hasVoltage())
+      {
+          units.hasVoltage = true;
+          units.voltage = v.voltage();
+      }
+      if (v.hasFrequency())
+      {
+          units.hasFrequency = true;
+          units.frequency = v.frequency();
+      }
     }
 
     void LefReader::lef_busbitchars_cbk(const std::string &v) {
-
+    _db.setBusBitChars(v);
     }
 
     void LefReader::lef_layer_cbk(lefiLayer const &v) {
+      if (v.hasType())
+      {
+          if (std::string(v.type()) == "CUT")
+          {
+              IndexType cutIdx = parseCutLayer(v);
+              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
+              _db.layerTypeVec().emplace_back(std::make_pair(0, cutIdx));
+              return;
+          }
+          if (std::string(v.type()) == "ROUTING")
+          {
+              IndexType routingIdx = parseRoutingLayer(v);
+              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
+              _db.mapLayerStr2AccessIdx()[v.name()] = _db.accessLayerTypeVec().size();
+              _db.layerTypeVec().emplace_back(std::make_pair(1, routingIdx));
+              //DBG("%s: access %d %s \n", __FUNCTION__, _db.accessLayerTypeVec().size(), v.name());
+              _db.accessLayerTypeVec().emplace_back(std::make_pair(1, routingIdx));
+              return;
+          }
+          if (std::string(v.type()) == "MASTERSLICE")
+          {
+              IndexType masterIdx = parseMastersliceLayer(v);
+              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
+              _db.mapLayerStr2AccessIdx()[v.name()] = _db.accessLayerTypeVec().size();
+              _db.layerTypeVec().emplace_back(std::make_pair(2, masterIdx));
+              //DBG("%s: access %d %s \n", __FUNCTION__, _db.accessLayerTypeVec().size(), v.name());
+              _db.accessLayerTypeVec().emplace_back(std::make_pair(2, masterIdx));
+              return;
+          }
+          if (std::string(v.type()) == "OVERLAP")
+          {
 
+              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
+              _db.layerTypeVec().emplace_back(std::make_pair(3, 0));
+              INF("%s: ignore OVERLAP layer %s. Not influence routing\n", __FUNCTION__, v.name());
+              return;
+          }
+          if (std::string(v.type()) == "IMPLANT")
+          {
+              INF("%s: ignore IMPLANT layer %s. Not influence routing\n", __FUNCTION__, v.name());
+              return;
+          }
+          AssertMsg(false, "%s: unknown layer type %s \n", __FUNCTION__, v.type());
+      }
+      else
+      {
+          AssertMsg(false, "%s: layer does not have type!\n", __FUNCTION__);
+      }
     }
 
     void LefReader::lef_maxstackvia_cbk(lefiMaxStackVia const &v) {
@@ -57,7 +146,13 @@
     }
 
     void LefReader::lef_via_cbk(lefiVia const &v) {
-
+      if (v.hasGenerated())
+      {
+      }
+      else
+      {
+          parseFixedVia(v);
+      }
     }
 
     void LefReader::lef_viarule_cbk(lefiViaRule const &v) {
@@ -217,11 +312,7 @@
                                 v.port(portIndex)->getRect(geoIndex)->yl,
                                 v.port(portIndex)->getRect(geoIndex)->xh,
                                 v.port(portIndex)->getRect(geoIndex)->yh,
-<<<<<<< HEAD:src/parser/lefdef/LefReader.cpp
-				v.name()
-=======
 								v.name()
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836:src/parser/lefdef/LefReader.cpp
                         );
                         //_db.getStdCellLib(currentMacroName).addPinName(v.name());
                     }
@@ -338,4 +429,3 @@
         LefParser::read(reader, fileName.c_str());
         //db =reader.getDb();
     }
-

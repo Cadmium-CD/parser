@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Install script for directory: /home/yi/Utexas/CAD/CAD/parser
-=======
-# Install script for directory: /home/cadmium/CAD_project/parser
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -49,9 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-<<<<<<< HEAD
 file(WRITE "/home/yi/Utexas/CAD/CAD/parser/${CMAKE_INSTALL_MANIFEST}"
-=======
-file(WRITE "/home/cadmium/CAD_project/parser/${CMAKE_INSTALL_MANIFEST}"
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

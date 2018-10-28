@@ -6,9 +6,5 @@ CXX_FLAGS = -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -st
 
 CXX_DEFINES = 
 
-<<<<<<< HEAD
 CXX_INCLUDES = -I/home/yi/Utexas/CAD/CAD/parser/src -I/home/yi/Utexas/CAD/CAD/parser/include 
-=======
-CXX_INCLUDES = -I/home/cadmium/CAD_project/parser/src -I/home/cadmium/CAD_project/parser/include 
->>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 

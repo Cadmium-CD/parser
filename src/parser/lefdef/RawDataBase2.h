@@ -73,7 +73,7 @@ class Unit
   double capacitance;
   bool hasDatabase;
   std::string databaseName;
-  double databaseNumber;  
+  double databaseNumber;
 };
 
 class MacroDataBase
@@ -86,7 +86,7 @@ public:
   string busBitChars;
   string clearanceMeasure;
   string divideChar;
-  string version
+  string version;
   double manufacturingGrid;
 
   vector<Unit> unitArray;
@@ -112,7 +112,7 @@ public:
     }
   }
 
-  void setVersion(const std::sting &v){
+  void setVersion(const std::string &v){
     version = v;
   }
 
