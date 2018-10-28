@@ -5,10 +5,12 @@
 #ifndef _LEFREADER_H
 #define _LEFREADER_H
 
+
 #include "LefDriver.h"
 //#include <boost/algorithm/string.hpp>
 //#include "config.h"
 #include "RawDataBase2.h"
+#define  IndexType std::uint32_t
 
     class LefReader : public LefParser::LefDataBase {
     public:
@@ -62,7 +64,7 @@
 
         void lef_busbitchars_cbk(const std::string &v) override;
 
-        void lef_layer_cbk(lefiLayer const &v) override;
+        void lef_layer_cbk(lefiLayer const &v) ;
 
         void lef_maxstackvia_cbk(lefiMaxStackVia const &v) override;
 
