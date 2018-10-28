@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /home/yi/Utexas/CAD/CAD/parser/CMakeFiles/rebuild_cache.dir
 /home/yi/Utexas/CAD/CAD/parser/CMakeFiles/ARouter.dir
 /home/yi/Utexas/CAD/CAD/parser/CMakeFiles/edit_cache.dir
+=======
+/home/cadmium/CAD_project/parser/CMakeFiles/edit_cache.dir
+/home/cadmium/CAD_project/parser/CMakeFiles/rebuild_cache.dir
+/home/cadmium/CAD_project/parser/CMakeFiles/ARouter.dir
+>>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836

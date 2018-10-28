@@ -51,10 +51,17 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/yi/Utexas/CAD/CAD/parser
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/yi/Utexas/CAD/CAD/parser
+=======
+CMAKE_SOURCE_DIR = /home/cadmium/CAD_project/parser
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /home/cadmium/CAD_project/parser
+>>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -83,9 +90,15 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yi/Utexas/CAD/CAD/parser/CMakeFiles /home/yi/Utexas/CAD/CAD/parser/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yi/Utexas/CAD/CAD/parser/CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cadmium/CAD_project/parser/CMakeFiles /home/cadmium/CAD_project/parser/CMakeFiles/progress.marks
+	$(MAKE) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cadmium/CAD_project/parser/CMakeFiles 0
+>>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836
 .PHONY : all
 
 # The main clean target

@@ -217,7 +217,11 @@
                                 v.port(portIndex)->getRect(geoIndex)->yl,
                                 v.port(portIndex)->getRect(geoIndex)->xh,
                                 v.port(portIndex)->getRect(geoIndex)->yh,
+<<<<<<< HEAD:src/parser/lefdef/LefReader.cpp
 				v.name()
+=======
+								v.name()
+>>>>>>> cbd5d49d77bdde01054e8f31b214ddc17a460836:src/parser/lefdef/LefReader.cpp
                         );
                         //_db.getStdCellLib(currentMacroName).addPinName(v.name());
                     }
