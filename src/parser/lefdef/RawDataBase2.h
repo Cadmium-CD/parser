@@ -67,6 +67,15 @@ public:
 
 };
 
+class Unit
+{
+  bool hasCapacitance;
+  double capacitance;
+  bool hasDatabase;
+  std::string databaseName;
+  double databaseNumber;  
+};
+
 class MacroDataBase
 {
 public:
@@ -74,8 +83,13 @@ public:
   double siteSizeX;
   double siteSizeY;
 
+  string busBitChars;
+  string clearanceMeasure;
+  string divideChar;
+  string version
+  double manufacturingGrid;
 
-  //vector<LefParser::StdCell> stdCellArray;
+  vector<Unit> unitArray;
   vector<StdCell> stdCellArray;
 
   void setLefSiteSizeX(double sizeX){
@@ -97,4 +111,32 @@ public:
       }
     }
   }
+
+  void setVersion(const std::sting &v){
+    version = v;
+  }
+
+  void setDivideChar(const std::string &v){
+    divideChar = v;
+  }
+
+  void setManufacturingGrid(double v){
+    manufacturingGrid = v;
+  }
+
+  void setClearanceMeasure(const std::string &v){
+    clearanceMeasure = v;
+  }
+
+  Unit units(){
+    Unit *u = new Unit();
+    unitArray.push_back(*u);
+    return *u;
+  }
+
+  void setBusbitChars_cbk(const std::string &v){
+    busBitChars = v;
+  }
+
+
 };
