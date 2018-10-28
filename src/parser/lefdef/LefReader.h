@@ -64,7 +64,7 @@
 
         void lef_busbitchars_cbk(const std::string &v) override;
 
-        void lef_layer_cbk(lefiLayer const &v) ;
+        void lef_layer_cbk(lefiLayer const &v);
 
         void lef_maxstackvia_cbk(lefiMaxStackVia const &v) override;
 
@@ -135,6 +135,5 @@
         std::string currentMacroName = "";
     };
     void readLef(std::string const &fileName, MacroDataBase &db);
-
 
 #endif //MIXEDSTACKLEGALIZATION_LEFREADER_H

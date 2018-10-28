@@ -56,7 +56,7 @@ void LefDataBase::lef_manufacturing_cbk(double v)
 }
 void LefDataBase::lef_useminspacing_cbk(lefiUseMinSpacing const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_clearancemeasure_cbk(string const& v)
@@ -66,7 +66,7 @@ void LefDataBase::lef_clearancemeasure_cbk(string const& v)
 }
 void LefDataBase::lef_units_cbk(lefiUnits const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_busbitchars_cbk(string const& v)
@@ -76,42 +76,42 @@ void LefDataBase::lef_busbitchars_cbk(string const& v)
 }
 void LefDataBase::lef_layer_cbk(lefiLayer & v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_maxstackvia_cbk(lefiMaxStackVia const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_via_cbk(lefiVia const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_viarule_cbk(lefiViaRule const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_spacing_cbk(lefiSpacing const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_irdrop_cbk(lefiIRDrop const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_minfeature_cbk(lefiMinFeature const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_dielectric_cbk(double v)
 {
-	cout << "LEF dielectric: " << v << endl;
+	//cout << "LEF dielectric: " << v << endl;
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_nondefault_cbk(lefiNonDefault const& /*v*/)
@@ -121,7 +121,7 @@ void LefDataBase::lef_nondefault_cbk(lefiNonDefault const& /*v*/)
 }
 void LefDataBase::lef_site_cbk(lefiSite const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_macrobegin_cbk(std::string const& v)
@@ -131,22 +131,22 @@ void LefDataBase::lef_macrobegin_cbk(std::string const& v)
 }
 void LefDataBase::lef_macro_cbk(lefiMacro const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_pin_cbk(lefiPin const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_obstruction_cbk(lefiObstruction const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_density_cbk(lefiDensity const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_timing_cbk(lefiTiming const& )
@@ -156,12 +156,12 @@ void LefDataBase::lef_timing_cbk(lefiTiming const& )
 }
 void LefDataBase::lef_array_cbk(lefiArray const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_prop_cbk(lefiProp const& v)
 {
-	v.print(stdout);
+	//v.print(stdout);
 	lef_user_cbk_reminder(__func__);
 }
 void LefDataBase::lef_noisemargin_cbk(lefiNoiseMargin const& )
