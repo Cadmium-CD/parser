@@ -69,7 +69,10 @@ public:
 
 class Unit
 {
+  bool haspower;
+  bool hasDatabase;
   bool hasCapacitance;
+  double power;
   double capacitance;
   bool hasDatabase;
   std::string databaseName;
@@ -91,6 +94,7 @@ public:
 
   vector<Unit> unitArray;
   vector<StdCell> stdCellArray;
+  vector<LefLayerCut> cutLayersArray;
 
   void setLefSiteSizeX(double sizeX){
     siteSizeX = sizeX;
@@ -128,15 +132,20 @@ public:
     clearanceMeasure = v;
   }
 
-  Unit units(){
-    Unit *u = new Unit();
-    unitArray.push_back(*u);
-    return *u;
+  void addUnitArray(Unit &unit){
+    unitArray.push_back(unit);
   }
 
   void setBusbitChars_cbk(const std::string &v){
     busBitChars = v;
   }
 
+  vector<LefLayerCut> cutLayers() {
+    return cutLayersArray;
+  } 
+
+  vector<LefLayerRouting> cutLayers() {
+    return cutLayersArray;
+  } 
 
 };

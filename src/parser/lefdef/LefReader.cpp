@@ -54,35 +54,10 @@
           units.hasCapacitance = true;
           units.capacitance = v.capacitance();
       }
-      if (v.hasResistance())
-      {
-          units.hasResistance = true;
-          units.resistance = v.resistance();
-      }
-      if (v.hasTime())
-      {
-          units.hasTime = true;
-          units.time = v.time();
-      }
       if (v.hasPower())
       {
           units.hasPower = true;
           units.power = v.power();
-      }
-      if (v.hasCurrent())
-      {
-          units.hasCurrent = true;
-          units.current = v.current();
-      }
-      if (v.hasVoltage())
-      {
-          units.hasVoltage = true;
-          units.voltage = v.voltage();
-      }
-      if (v.hasFrequency())
-      {
-          units.hasFrequency = true;
-          units.frequency = v.frequency();
       }
     }
 
@@ -110,27 +85,12 @@
               _db.accessLayerTypeVec().emplace_back(std::make_pair(1, routingIdx));
               return;
           }
-          if (std::string(v.type()) == "MASTERSLICE")
-          {
-              IndexType masterIdx = parseMastersliceLayer(v);
-              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
-              _db.mapLayerStr2AccessIdx()[v.name()] = _db.accessLayerTypeVec().size();
-              _db.layerTypeVec().emplace_back(std::make_pair(2, masterIdx));
-              //DBG("%s: access %d %s \n", __FUNCTION__, _db.accessLayerTypeVec().size(), v.name());
-              _db.accessLayerTypeVec().emplace_back(std::make_pair(2, masterIdx));
-              return;
-          }
           if (std::string(v.type()) == "OVERLAP")
           {
 
               _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
               _db.layerTypeVec().emplace_back(std::make_pair(3, 0));
               INF("%s: ignore OVERLAP layer %s. Not influence routing\n", __FUNCTION__, v.name());
-              return;
-          }
-          if (std::string(v.type()) == "IMPLANT")
-          {
-              INF("%s: ignore IMPLANT layer %s. Not influence routing\n", __FUNCTION__, v.name());
               return;
           }
           AssertMsg(false, "%s: unknown layer type %s \n", __FUNCTION__, v.type());
