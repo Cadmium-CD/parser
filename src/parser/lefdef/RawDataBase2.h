@@ -69,14 +69,74 @@ public:
 
 class Unit
 {
+public:
   bool haspower;
   bool hasDatabase;
   bool hasCapacitance;
   double power;
   double capacitance;
-  bool hasDatabase;
   std::string databaseName;
   double databaseNumber;
+};
+
+class LefLayerCut
+{
+public:
+    std::string name;
+    double width;
+    double spacing;
+};
+
+class LefLayerRouting
+{
+public:
+    std::string name;
+    bool hasPitch;
+    bool hasXYPitch;
+    bool hasWidth;
+    bool hasArea;
+    bool hasSpacingNumber;
+    bool hasDirection;
+    bool hasMinWidth;
+    bool hasMaxWidth;
+    double pitch;
+    double pitchX;
+    double pitchY;
+    double width;
+    double area;
+    std::int32_t numSpacing;
+    std::string direction;
+    double minWidth;
+    double maxWidth;
+    std::int32_t numSpacingTable;
+};
+
+class LefLayerOverlap
+{
+public:
+    std::string name;
+};
+
+class cutLayerRect
+{
+public:
+  double rect[4];
+};
+
+class LefRawFixedVia
+{
+public:
+  std::string name;
+  std::string bottomLayer;
+  std::string cutLayer;
+  std::string topLayer;
+  bool isDefault;
+  bool hasResistance;
+  double resistance;
+  double bottomLayerRect[4];
+  std::uint32_t numCutRect;
+  vector<cutLayerRect> cutLayerRectArray; //cutLayerRect should be a 4 double array
+  double topLayerRect[4];
 };
 
 class MacroDataBase
@@ -95,6 +155,9 @@ public:
   vector<Unit> unitArray;
   vector<StdCell> stdCellArray;
   vector<LefLayerCut> cutLayersArray;
+  vector<LefLayerRouting> routingLayersArray;
+  vector<LefLayerOverlap> overlapLayersArray;
+  vector<LefRawFixedVia> fixedViaArray;
 
   void setLefSiteSizeX(double sizeX){
     siteSizeX = sizeX;
@@ -136,16 +199,27 @@ public:
     unitArray.push_back(unit);
   }
 
+  vector<Unit>  getUnitArray(){
+    return unitArray;
+  }
+
   void setBusbitChars_cbk(const std::string &v){
     busBitChars = v;
   }
 
   vector<LefLayerCut> cutLayers() {
     return cutLayersArray;
-  } 
+  }
 
-  vector<LefLayerRouting> cutLayers() {
-    return cutLayersArray;
-  } 
+  vector<LefLayerRouting> routingLayers() {
+    return routingLayersArray;
+  }
 
+  vector<LefLayerOverlap> overlapLayers() {
+    return overlapLayersArray;
+  }
+
+  vector<LefRawFixedVia> fixedVias() {
+    return fixedViaArray;
+  }
 };

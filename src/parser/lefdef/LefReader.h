@@ -11,6 +11,7 @@
 //#include "config.h"
 #include "RawDataBase2.h"
 #define  IndexType std::uint32_t
+#define  IntType std::int32_t
 
     class LefReader : public LefParser::LefDataBase {
     public:

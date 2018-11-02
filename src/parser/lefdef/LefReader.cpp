@@ -41,23 +41,32 @@
     }
 
     void LefReader::lef_units_cbk(lefiUnits const &v) {
-      _db.units() = LefUnit();
-      auto &units = _db.units();
+      Unit temp = Unit();
+      _db.addUnitArray(temp);  //Q: Does the struct of v match our struct???
+      //_db.units() = LefUnit();
+      //auto &units = _db.units();
       if (v.hasDatabase())
       {
-          units.hasDatabase = true;
-          units.databaseName = v.databaseName();
-          units.databaseNumber = v.databaseNumber();
+          _db.getUnitArray()[0]->hasCapacitance = true;
+          _db.getUnitArray()[0]->databaseName = v.databaseName();
+          _db.getUnitArray()[0]->databaseNumber = v.databaseNumber();
+          //units.hasDatabase = true;
+          //units.databaseName = v.databaseName();
+          //units.databaseNumber = v.databaseNumber();
       }
       if (v.hasCapacitance())
       {
-          units.hasCapacitance = true;
-          units.capacitance = v.capacitance();
+          _db.getUnitArray()[0]->hasCapacitance = true;
+          _db.getUnitArray()[0]->capacitance = v.capacitance();
+          //units.hasCapacitance = true;
+          //units.capacitance = v.capacitance();
       }
       if (v.hasPower())
       {
-          units.hasPower = true;
-          units.power = v.power();
+          _db.getUnitArray()[0]->haspower = true;
+          _db.getUnitArray()[0]->power = v.power();
+          //units.hasPower = true;
+          //units.power = v.power();
       }
     }
 
@@ -71,26 +80,26 @@
           if (std::string(v.type()) == "CUT")
           {
               IndexType cutIdx = parseCutLayer(v);
-              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
-              _db.layerTypeVec().emplace_back(std::make_pair(0, cutIdx));
+              //_db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
+              //_db.layerTypeVec().emplace_back(std::make_pair(0, cutIdx));
               return;
           }
           if (std::string(v.type()) == "ROUTING")
           {
               IndexType routingIdx = parseRoutingLayer(v);
-              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
-              _db.mapLayerStr2AccessIdx()[v.name()] = _db.accessLayerTypeVec().size();
-              _db.layerTypeVec().emplace_back(std::make_pair(1, routingIdx));
+              //_db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
+              //_db.mapLayerStr2AccessIdx()[v.name()] = _db.accessLayerTypeVec().size();
+            //  _db.layerTypeVec().emplace_back(std::make_pair(1, routingIdx));
               //DBG("%s: access %d %s \n", __FUNCTION__, _db.accessLayerTypeVec().size(), v.name());
-              _db.accessLayerTypeVec().emplace_back(std::make_pair(1, routingIdx));
+              //_db.accessLayerTypeVec().emplace_back(std::make_pair(1, routingIdx));
               return;
           }
           if (std::string(v.type()) == "OVERLAP")
           {
-
-              _db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
-              _db.layerTypeVec().emplace_back(std::make_pair(3, 0));
-              INF("%s: ignore OVERLAP layer %s. Not influence routing\n", __FUNCTION__, v.name());
+              parseOverlapLayer(v);
+              //_db.mapLayerStr2Idx()[v.name()] = _db.layerTypeVec().size();
+              //_db.layerTypeVec().emplace_back(std::make_pair(3, 0));
+              //INF("%s: ignore OVERLAP layer %s. Not influence routing\n", __FUNCTION__, v.name());
               return;
           }
           AssertMsg(false, "%s: unknown layer type %s \n", __FUNCTION__, v.type());
@@ -389,6 +398,7 @@
         LefLayerCut cut = LefLayerCut();
         cut.name = std::string(v.name());
         cut.width = v.width();
+        //what's v.spacing?
         IntType numSpacing = v.numSpacing();
         /// TODO: Handle other spacings
         for (IntType spacingIdx = 0; spacingIdx < numSpacing; ++ spacingIdx)
@@ -397,8 +407,8 @@
             cut.spacing = v.spacing(0);
         }
         /// Return index of this in the cut layers
-        IndexType cutIdx = _techDB.cutLayers().size();
-        _techDB.cutLayers().emplace_back(cut);
+        IndexType cutIdx = _db.cutLayers().size();
+        _db.cutLayers().emplace_back(cut);
         return cutIdx;
     }
 
@@ -418,7 +428,7 @@
             route.pitchX = v.pitchX();
             route.pitchY = v.pitchY();
         }
-        if (v.hasOffset())
+      /*if (v.hasOffset())
         {
             route.hasOffset = true;
             route.offset = v.offset();
@@ -428,7 +438,7 @@
             route.hasXYOffset = true;
             route.offsetX = v.offsetX();
             route.offsetY = v.offsetY();
-        }
+        }*/
         if (v.hasWidth())
         {
             route.hasWidth = true;
@@ -447,7 +457,7 @@
         /// Process spacing information in other subroutine
         for (IntType idx = 0; idx < route.numSpacing; ++idx)
         {
-            processRoutingLayerSpacing(route, v, idx);
+            processRoutingLayerSpacing(route, v, idx);//can't understand
         }
 
         if (v.hasDirection())
@@ -492,9 +502,29 @@
         }
 
         ///Return the index of the input in the routing layers
-        IndexType routingIdx = _techDB.routingLayers().size();
-        _techDB.routingLayers().emplace_back(route);
+        IndexType routingIdx = _db.routingLayers().size();
+        _db.routingLayers().emplace_back(route);
         return routingIdx;
+    }
+
+    void LefReader::parseOverlapLayer(lefiLayer const &v)
+    {
+        LefLayerOverlap overlap = LefLayerOverlap();
+        overlap.name = std::string(v.name());
+        /*cut.width = v.width();
+        //what's v.spacing?
+        IntType numSpacing = v.numSpacing();
+        /// TODO: Handle other spacings
+        for (IntType spacingIdx = 0; spacingIdx < numSpacing; ++ spacingIdx)
+        {
+            //cut.spacing = v.spacing(spacingIdx);
+            cut.spacing = v.spacing(0);
+        }
+        /// Return index of this in the cut layers
+        IndexType cutIdx = _db.cutLayers().size();
+        _db.cutLayers().emplace_back(cut);
+        return cutIdx;*/
+        _db.overlapLayers().emplace_back(overlap);
     }
 
     void LefReader::processRoutingLayerSpacing(LefLayerRouting &route, lefiLayer const &v, IntType spacingIdx)
@@ -560,7 +590,7 @@
 
     void LefReader::parseFixedVia(const lefiVia &v)
     {
-        LefRawFixedVia via;
+        LefRawFixedVia via = LefRawFixedVia();
         via.name = v.name();
         if (v.hasDefault())
         {
@@ -588,7 +618,11 @@
         yLo = v.yl(0, 0);
         xHi = v.xh(0, 0);
         yHi = v.yh(0, 0);
-        via.bottomLayerRect = Box<RealType>(xLo, yLo, xHi, yHi);
+        via.bottomLayerRect[0] = xLo;
+        via.bottomLayerRect[1] = yLo;
+        via.bottomLayerRect[2] = xHi;
+        via.bottomLayerRect[3] = yHi;
+        //via.bottomLayerRect = Box<RealType>(xLo, yLo, xHi, yHi);
 
         /// CUT
         via.cutLayer = v.layerName(1);
@@ -604,7 +638,13 @@
             yLo = v.yl(1, cutRectIdx);
             xHi = v.xh(1, cutRectIdx);
             yHi = v.yh(1, cutRectIdx);
-            via.cutLayerRectArray.emplace_back(Box<RealType>(xLo, yLo, xHi, yHi));
+            cutLayerRect temp = cutLayerRect();
+            temp.rect[0] = xLo;
+            temp.rect[1] = yLo;
+            temp.rect[2] = xLi;
+            temp.rect[3] = yLi;
+            via.cutLayerRectArray.emplace_back(temp);
+            //via.cutLayerRectArray.emplace_back(Box<RealType>(xLo, yLo, xHi, yHi));
         }
 
         /// top
@@ -615,9 +655,13 @@
         yLo = v.yl(2, 0);
         xHi = v.xh(2, 0);
         yHi = v.yh(2, 0);
-        via.topLayerRect = Box<RealType>(xLo, yLo, xHi, yHi);
+        via.topLayerRect[0] = xLo;
+        via.topLayerRect[1] = yLo;
+        via.topLayerRect[2] = xHi;
+        via.topLayerRect[3] = yHi;
+        //via.topLayerRect = Box<RealType>(xLo, yLo, xHi, yHi);
 
-        _rawFixedViaArray.emplace_back(via);
+        _db.fixedVias().emplace_back(via);
     }
 
     ////////////////////
