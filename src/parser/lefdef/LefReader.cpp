@@ -42,32 +42,32 @@
 
     void LefReader::lef_units_cbk(lefiUnits const &v) {
       Unit temp = Unit();
-      _db.addUnitArray(temp);  //Q: Does the struct of v match our struct???
       //_db.units() = LefUnit();
       //auto &units = _db.units();
       if (v.hasDatabase())
       {
-          _db.getUnitArray()[0]->hasCapacitance = true;
-          _db.getUnitArray()[0]->databaseName = v.databaseName();
-          _db.getUnitArray()[0]->databaseNumber = v.databaseNumber();
+          temp->hasCapacitance = true;
+          temp->databaseName = v.databaseName();
+          temp->databaseNumber = v.databaseNumber();
           //units.hasDatabase = true;
           //units.databaseName = v.databaseName();
           //units.databaseNumber = v.databaseNumber();
       }
       if (v.hasCapacitance())
       {
-          _db.getUnitArray()[0]->hasCapacitance = true;
-          _db.getUnitArray()[0]->capacitance = v.capacitance();
+          temp->hasCapacitance = true;
+          temp->capacitance = v.capacitance();
           //units.hasCapacitance = true;
           //units.capacitance = v.capacitance();
       }
       if (v.hasPower())
       {
-          _db.getUnitArray()[0]->haspower = true;
-          _db.getUnitArray()[0]->power = v.power();
+          temp->haspower = true;
+          temp->power = v.power();
           //units.hasPower = true;
           //units.power = v.power();
       }
+      _db.addUnitArray(temp);
     }
 
     void LefReader::lef_busbitchars_cbk(const std::string &v) {
