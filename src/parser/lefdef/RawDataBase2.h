@@ -79,6 +79,22 @@ public:
   double databaseNumber;
 };
 
+class EolSpacing
+{
+public:
+  double spacing;
+  double spacingEolWidth;
+  double spacingEolWithin;
+};
+
+class SpacingTable
+{
+public:
+  vector<double> spacingTableParallelRunLength;
+  vector<double> spacingTableWidth;
+  vector<double> spacingTableSpacing;
+}:
+
 class LefLayerCut
 {
 public:
@@ -109,6 +125,19 @@ public:
     double minWidth;
     double maxWidth;
     std::int32_t numSpacingTable;
+    vector<EolSpacing> eolSpacingArray;
+    vector<double> spacing;
+    vector<SpacingTable> spacingTableArray; //Should I write the add function to call it or just directly call it?
+
+    vector<EolSpacing> addEolSpacingArray(){
+      return eolSpacingArray;
+    }
+
+    vector<double> addSpacingArray(){
+      return spacing;
+    }
+
+    vector<SpacingTable> spacingTableArray;
 };
 
 class LefLayerOverlap

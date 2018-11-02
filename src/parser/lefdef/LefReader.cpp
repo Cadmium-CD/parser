@@ -544,35 +544,44 @@
         /// add others later... if not forever...
         else if (v.hasSpacingEndOfLine(spacingIdx))
         {
-            route.eolSpacing.emplace_back(EOLSpacing(v.spacing(spacingIdx), v.spacingEolWidth(spacingIdx), v.spacingEolWithin(spacingIdx)));
+            EolSpacing temp = EolSpacing();
+            temp.spacing = v.spacing(spacingIdx);
+            temp.spacingEolWidth = v.spacingEolWidth(spacingIdx);
+            temp.spacingEolWithin = v.spacingEolWithin(spacingIdx);
+            route.addEolSpacingArray().emplace_back(temp);
+            //route.eolSpacing.emplace_back(EOLSpacing(v.spacing(spacingIdx), v.spacingEolWidth(spacingIdx), v.spacingEolWithin(spacingIdx)));
         }
         /// others...
         else
         {
             /// raw spacing...
-            route.spacing.emplace_back(v.spacing(spacingIdx));
+            route.addSpacingArray().emplace_back(v.spacing(spacingIdx));
         }
     }
 
     void LefReader::processRoutingLayerSpacingTableParallel(LefLayerRouting &route, lefiSpacingTable const *v)
     {
         const lefiParallel *para = v->parallel();
+        SpacingTable temp = SpacingTable();
         for (IntType lenIdx = 0; lenIdx < para->numLength(); ++lenIdx)
         {
-            route.spacingTableParallelRunLength.emplace_back(para->length(lenIdx));
+            temp.spacingTableParallelRunLength.emplace_back(para->length(lenIdx));
         }
         for (IntType widthIdx = 0; widthIdx < para->numWidth(); ++widthIdx)
         {
-            route.spacingTableWidth.emplace_back(para->width(widthIdx));
+            temp.spacingTableWidth.emplace_back(para->width(widthIdx));
         }
-        route.spacingTableSpacing.resize(para->numLength(), para->numWidth());
-        for (IntType lenIdx = 0; lenIdx < para->numLength(); ++lenIdx)
+        //route.spacingTableSpacing.resize(para->numLength(), para->numWidth());
+        //temp.spacingTableSpacing.resize(para->numWidth());
+        for (IntType lenIdx = 0; lenIdx < para->numLength(); ++lenIdx) //assume length = 1
         {
             for (IntType widthIdx = 0; widthIdx < para->numWidth(); ++widthIdx)
             {
-                route.spacingTableSpacing.at(lenIdx, widthIdx) = para->widthSpacing(widthIdx, lenIdx);
+                temp.spacingTableSpacing.emplace_back(para->widthSpacing(widthIdx, lenIdx));
+                //route.spacingTableSpacing.at(lenIdx, widthIdx) = para->widthSpacing(widthIdx, lenIdx);
             }
         }
+        route.spacingTableArray.emplace_back(temp);
     }
 
     IndexType LefReader::parseMastersliceLayer(const lefiLayer &v)
@@ -669,6 +678,7 @@
     ////////////////////
 
     /// Wrapper function
+/*
     void LefReader::postProcessing()
     {
         /// Fixed VIA
@@ -751,6 +761,7 @@
         /// push_back to the vector
         _macroDB.fixedViaVec2D().at(via.accessLayerIdx()).emplace_back(via);
     }
+*/
 
     void readLef(std::string const &fileName, MacroDataBase &db) {
         LefReader reader = LefReader(db);
