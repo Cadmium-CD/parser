@@ -130,8 +130,17 @@
 
         void lef_macro_endcbk(const char *macroName) override;
 
+        IndexType parseCutLayer (lefiLayer const &v);
 
+        IndexType parseRoutingLayer (lefiLayer const &v);
 
+        IndexType parseOverlapLayer (lefiLayer const &v);
+
+        void parseFixedVia (const lefiVia &v);
+
+        void processRoutingLayerSpacing(LefLayerRouting &route, lefiLayer const &v, IntType spacingIdx);
+
+        void processRoutingLayerSpacingTableParallel(LefLayerRouting &route, lefiSpacingTable const *v);
     private:
         MacroDataBase &_db;
         std::string currentMacroName = "";

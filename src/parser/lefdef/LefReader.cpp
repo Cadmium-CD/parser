@@ -4,9 +4,9 @@
 //
 
 #include "LefReader.h"
-
-
-
+#define  IndexType std::uint32_t
+#define  IntType std::int32_t
+#define  RealType double
 
     void LefReader::lef_version_cbk(const std::string &v) {
     _db.setVersion(v);
@@ -46,24 +46,24 @@
       //auto &units = _db.units();
       if (v.hasDatabase())
       {
-          temp->hasCapacitance = true;
-          temp->databaseName = v.databaseName();
-          temp->databaseNumber = v.databaseNumber();
+          temp.hasCapacitance = true;
+          temp.databaseName = v.databaseName();
+          temp.databaseNumber = v.databaseNumber();
           //units.hasDatabase = true;
           //units.databaseName = v.databaseName();
           //units.databaseNumber = v.databaseNumber();
       }
       if (v.hasCapacitance())
       {
-          temp->hasCapacitance = true;
-          temp->capacitance = v.capacitance();
+          temp.hasCapacitance = true;
+          temp.capacitance = v.capacitance();
           //units.hasCapacitance = true;
           //units.capacitance = v.capacitance();
       }
       if (v.hasPower())
       {
-          temp->haspower = true;
-          temp->power = v.power();
+          temp.haspower = true;
+          temp.power = v.power();
           //units.hasPower = true;
           //units.power = v.power();
       }
@@ -102,11 +102,11 @@
               //INF("%s: ignore OVERLAP layer %s. Not influence routing\n", __FUNCTION__, v.name());
               return;
           }
-          AssertMsg(false, "%s: unknown layer type %s \n", __FUNCTION__, v.type());
+          //AssertMsg(false, "%s: unknown layer type %s \n", __FUNCTION__, v.type());
       }
       else
       {
-          AssertMsg(false, "%s: layer does not have type!\n", __FUNCTION__);
+          //AssertMsg(false, "%s: layer does not have type!\n", __FUNCTION__);
       }
     }
 
@@ -412,7 +412,7 @@
         return cutIdx;
     }
 
-    IndexType LefReader::parseRoutingLayer(lefiLayer &v)
+    IndexType LefReader::parseRoutingLayer(lefiLayer const &v)
     {
         LefLayerRouting route = LefLayerRouting();
 

@@ -93,7 +93,7 @@ public:
   vector<double> spacingTableParallelRunLength;
   vector<double> spacingTableWidth;
   vector<double> spacingTableSpacing;
-}:
+};
 
 class LefLayerCut
 {
@@ -124,7 +124,7 @@ public:
     std::string direction;
     double minWidth;
     double maxWidth;
-    std::int32_t numSpacingTable;
+    int numSpacingTable;
     vector<EolSpacing> eolSpacingArray;
     vector<double> spacing;
     vector<SpacingTable> spacingTableArray; //Should I write the add function to call it or just directly call it?
@@ -136,8 +136,6 @@ public:
     vector<double> addSpacingArray(){
       return spacing;
     }
-
-    vector<SpacingTable> spacingTableArray;
 };
 
 class LefLayerOverlap
@@ -232,7 +230,7 @@ public:
     return unitArray;
   }
 
-  void setBusbitChars_cbk(const std::string &v){
+  void setBusBitChars(const std::string &v){
     busBitChars = v;
   }
 
