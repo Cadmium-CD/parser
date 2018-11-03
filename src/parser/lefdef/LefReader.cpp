@@ -412,7 +412,7 @@
         return cutIdx;
     }
 
-    IndexType LefReader::parseRoutingLayer(lefiLayer const &v)
+    IndexType LefReader::parseRoutingLayer(lefiLayer &v)
     {
         LefLayerRouting route = LefLayerRouting();
 

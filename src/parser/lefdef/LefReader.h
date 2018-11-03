@@ -132,7 +132,7 @@
 
         IndexType parseCutLayer (lefiLayer const &v);
 
-        IndexType parseRoutingLayer (lefiLayer const &v);
+        IndexType parseRoutingLayer (lefiLayer &v);
 
         IndexType parseOverlapLayer (lefiLayer const &v);
 
