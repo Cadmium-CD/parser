@@ -2,12 +2,17 @@
 #include <string>
 #include <iostream>
 using namespace std;
+class Recunit
+{
+public:
+  double recXl,recYl,recXh,recYh;
+};
 
 class Pin
 {
 public:
   string name;
-  double pinX1,pinY1,pinXh,pinYh;
+  vector<Recunit> recArray;
 };
 
 
@@ -55,15 +60,17 @@ public:
     macroName = name;
   }
 
-  void addPin(double x1, double y1, double xh, double yh, std::string name){
+  void addPin(vector<Recunit> recTemp,std::string name){
     Pin *p = new Pin();
-    p->pinX1 = x1;
-    p->pinY1 = y1;
-    p->pinXh = xh;
-    p->pinYh = yh;
+    p->recArray = recTemp;
     p->name = name;
     pinArray.push_back(*p);
+    /*cout<<"name"<< p->name<<endl;
+    for(int i = 0;i<recTemp.size();i++){
+    cout<<"x1:"<< p->recArray[i].recXl<<endl;
+  }*/
   }
+
 
 };
 

@@ -234,6 +234,7 @@
         //LefDataBase::lef_pin_cbk(v);
         //std::cout<<v.name()<<std::endl;
         std::string str = std::string(v.name());
+        vector<Recunit> RecArray;
         if (str == "vdd") {
             for (IndexType portIndex = 0; portIndex < v.numPorts(); ++portIndex) {
                 //lefiGeometries test = *v.port(portIndex);
@@ -267,6 +268,13 @@
                 //lefiGeometries test = *v.port(portIndex);
                 for (IndexType geoIndex = 0; geoIndex < v.port(portIndex)->numItems(); ++geoIndex) {
                     if (v.port(portIndex)->itemType(geoIndex) == lefiGeomRectE) {
+
+                                Recunit *r = new Recunit();
+                                r->recXl = v.port(portIndex)->getRect(geoIndex)->xl,
+                                r->recYl = v.port(portIndex)->getRect(geoIndex)->yl,
+                                r->recXh = v.port(portIndex)->getRect(geoIndex)->xh,
+                                r->recYh = v.port(portIndex)->getRect(geoIndex)->yh,
+                                RecArray.push_back(*r);
                         _db.getStdCellLib(currentMacroName).addPin(
                                 v.port(portIndex)->getRect(geoIndex)->xl,
                                 v.port(portIndex)->getRect(geoIndex)->yl,
