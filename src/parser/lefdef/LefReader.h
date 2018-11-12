@@ -11,6 +11,7 @@
 //#include "config.h"
 #include "RawDataBase2.h"
 #define  IndexType std::uint32_t
+#define  IntType std::int32_t
 
     class LefReader : public LefParser::LefDataBase {
     public:
@@ -65,7 +66,7 @@
         void lef_busbitchars_cbk(const std::string &v) override;
 
 
-        void lef_layer_cbk(lefiLayer const &v);
+        void lef_layer_cbk( const lefiLayer &v);
 
         void lef_maxstackvia_cbk(lefiMaxStackVia const &v) override;
 
@@ -129,8 +130,20 @@
 
         void lef_macro_endcbk(const char *macroName) override;
 
+        IndexType parseCutLayer ( const lefiLayer &v);
 
+        IndexType parseRoutingLayer (const lefiLayer &v);
 
+        //IndexType parseOverlapLayer ( lefiLayer &v);
+        void parseOverlapLayer ( const lefiLayer &v);
+
+        void parseFixedVia (const lefiVia &v);
+
+        void processRoutingLayerSpacing(LefLayerRouting &route, const lefiLayer  &v, IntType spacingIdx);
+
+        void processRoutingLayerSpacingTableParallel(LefLayerRouting &route, const lefiSpacingTable  *v);
+
+		IndexType parseMastersliceLayer(lefiLayer &v);
     private:
         MacroDataBase &_db;
         std::string currentMacroName = "";

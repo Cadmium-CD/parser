@@ -2,17 +2,12 @@
 #include <string>
 #include <iostream>
 using namespace std;
-class Recunit
-{
-public:
-  double recXl,recYl,recXh,recYh;
-};
 
 class Pin
 {
 public:
   string name;
-  vector<Recunit> recArray;
+  double pinX1,pinY1,pinXh,pinYh;
 };
 
 
@@ -60,30 +55,124 @@ public:
     macroName = name;
   }
 
-  void addPin(vector<Recunit> recTemp,std::string name){
+  void addPin(double x1, double y1, double xh, double yh, std::string name){
     Pin *p = new Pin();
-    p->recArray = recTemp;
+    p->pinX1 = x1;
+    p->pinY1 = y1;
+    p->pinXh = xh;
+    p->pinYh = yh;
     p->name = name;
     pinArray.push_back(*p);
-    /*cout<<"name"<< p->name<<endl;
-    for(int i = 0;i<recTemp.size();i++){
-    cout<<"x1:"<< p->recArray[i].recXl<<endl;
-  }*/
   }
-
 
 };
 
 class Unit
 {
+public:
   bool haspower;
   bool hasDatabase;
   bool hasCapacitance;
   double power;
   double capacitance;
-  bool hasDatabase;
   std::string databaseName;
   double databaseNumber;
+};
+
+class EolSpacing
+{
+public:
+  double spacing;
+  double spacingEolWidth;
+  double spacingEolWithin;
+};
+
+class SpacingTable
+{
+public:
+  vector<double> spacingTableParallelRunLength;
+  vector<double> spacingTableWidth;
+  vector<double> spacingTableSpacing;
+};
+
+class LefLayerCut
+{
+public:
+    std::string name;
+    double width;
+    double spacing;
+};
+class LefLayerMasterslice
+{
+public:
+	std::string name;
+};
+
+class LefLayerRouting
+{
+public:
+    std::string name;
+    bool hasPitch;
+    bool hasXYPitch;
+    bool hasWidth;
+    bool hasArea;
+    bool hasSpacingNumber;
+    bool hasDirection;
+    bool hasMinWidth;
+    bool hasMaxWidth;
+    double pitch;
+    double pitchX;
+    double pitchY;
+    double width;
+    double area;
+    std::int32_t numSpacing;
+    std::string direction;
+    double minWidth;
+    double maxWidth;
+    int numSpacingTable;
+    vector<EolSpacing> eolSpacingArray;
+    vector<double> spacing;
+    vector<SpacingTable> spacingTableArray; //Should I write the add function to call it or just directly call it?
+
+    vector<EolSpacing> addEolSpacingArray(){
+      return eolSpacingArray;
+    }
+
+    vector<double> addSpacingArray(){
+      return spacing;
+    }
+
+    void setnumSpacingTable(const int numSpacingTable){
+    this->numSpacingTable = numSpacingTable;
+  	}
+};
+
+class LefLayerOverlap
+{
+public:
+    std::string name;
+};
+
+class cutLayerRect
+{
+public:
+  double rect[4];
+};
+
+class LefRawFixedVia
+{
+public:
+  std::string name;
+  std::string bottomLayer;
+  std::string cutLayer;
+  std::string topLayer;
+  bool isDefault;
+  bool hasResistance;
+  double resistance;
+  double bottomLayerRect[4];
+  std::uint32_t numCutRect;
+  vector<cutLayerRect> cutLayerRectArray; //cutLayerRect should be a 4 double array
+  double topLayerRect[4];
 };
 
 class MacroDataBase
@@ -102,6 +191,10 @@ public:
   vector<Unit> unitArray;
   vector<StdCell> stdCellArray;
   vector<LefLayerCut> cutLayersArray;
+  vector<LefLayerRouting> routingLayersArray;
+  vector<LefLayerOverlap> overlapLayersArray;
+  vector<LefRawFixedVia> fixedViaArray;
+  vector<LefLayerMasterslice> masterSliceArray;
 
   void setLefSiteSizeX(double sizeX){
     siteSizeX = sizeX;
@@ -143,16 +236,32 @@ public:
     unitArray.push_back(unit);
   }
 
-  void setBusbitChars_cbk(const std::string &v){
+  vector<Unit>  getUnitArray(){
+    return unitArray;
+  }
+
+  void setBusBitChars(const std::string &v){
     busBitChars = v;
   }
 
   vector<LefLayerCut> cutLayers() {
     return cutLayersArray;
-  } 
+  }
 
-  vector<LefLayerRouting> cutLayers() {
-    return cutLayersArray;
-  } 
+  vector<LefLayerRouting> routingLayers() {
+    return routingLayersArray;
+  }
+
+  vector<LefLayerOverlap> overlapLayers() {
+    return overlapLayersArray;
+  }
+
+  vector<LefRawFixedVia> fixedVias() {
+    return fixedViaArray;
+  }
+
+  vector<LefLayerMasterslice> mastersliceLayers(){
+  	return masterSliceArray;
+  }
 
 };
