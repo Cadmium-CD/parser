@@ -1,3 +1,0 @@
-/home/yi/Utexas/CAD/CAD/parser/CMakeFiles/rebuild_cache.dir
-/home/yi/Utexas/CAD/CAD/parser/CMakeFiles/ARouter.dir
-/home/yi/Utexas/CAD/CAD/parser/CMakeFiles/edit_cache.dir

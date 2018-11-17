@@ -78,6 +78,15 @@ public:
   vector<DefParser::Net> getNetArray(){
     return netArray;
   }
+    
+  DefParser::Net getNet(String netName){
+    for(int i = 0; i < netArray.size(); ++i) {
+        if (netName.compare(netArray[i].net_name) == 0) {
+            return netArray[i];
+        }
+    }
+    return nullptr;
+  }
 
   void addSnetpArray(const DefParser::Snetp &snetp){
     snetpArray.push_back(snetp);
