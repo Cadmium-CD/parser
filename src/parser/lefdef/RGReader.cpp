@@ -5,20 +5,20 @@
 using namespace std;
 
 
-RouteGuide addRouteGuide(DefParser::Net net, double x0, double y0, double x1, double y1, int metal){
+RouteGuide addRouteGuide(DefParser::Net net, double x0, double y0, double x1, double y1){
     
-    RouteGuide rg = RouteGuide(x0,y0,x1,y1,metal);
+    RouteGuide rg = RouteGuide(x0,y0,x1,y1);
     rg.addNet(net);
     return rg;
     
 }
 
-RouteGuide* searchRouteGuide(vector<RouteGuide> vRouteGuide,double x0, double y0, double x1, double y1, int numMetal){
+RouteGuide* searchRouteGuide(vector<RouteGuide> vRouteGuide,double x0, double y0, double x1, double y1){
     for (int i = 0; i < vRouteGuide.size(); ++i) {
         
         RouteGuide rg = vRouteGuide[i];
         
-        if ((rg.x0 == x0) && (rg.y0 == y0) && (rg.x1 == x1) && (rg.y1 == y1) && (rg.metal == numMetal)){
+        if ((rg.x0 == x0) && (rg.y0 == y0) && (rg.x1 == x1) && (rg.y1 == y1)){
             return &rg;
         }
     }
@@ -27,14 +27,14 @@ RouteGuide* searchRouteGuide(vector<RouteGuide> vRouteGuide,double x0, double y0
 }
 
 // net stored in route guides
-vector<RouteGuide> parseRouteGuid(string fileName, RawDataBase r_db){
+vector<vector<RouteGuide>> parseRouteGuid(string fileName, RawDataBase r_db){
     
     
     std::ifstream fin(fileName);
     
     DefParser::Net currentNet;
     //RouteGuide currentRouteGuide;
-    vector<RouteGuide> vRouteGuide;
+    vector<vector<RouteGuide>> vRouteGuide(9);
     
     // helper var for parsing
     bool isNet = true;
@@ -88,10 +88,10 @@ vector<RouteGuide> parseRouteGuid(string fileName, RawDataBase r_db){
             numMetal = (int) metal[5] - 48;
             
             //search if the route guide is already in list
-            RouteGuide* rgPtr = searchRouteGuide(vRouteGuide,x0,y0,x1,y1,numMetal);
+            RouteGuide* rgPtr = searchRouteGuide(vRouteGuide[numMetal],x0,y0,x1,y1);
             if (!rgPtr) {
-                RouteGuide rg = addRouteGuide(currentNet,x0,y0,x1,y1,numMetal);
-                vRouteGuide.push_back(rg);
+                RouteGuide rg = addRouteGuide(currentNet,x0,y0,x1,y1);
+                vRouteGuide[numMetal].push_back(rg);
             } else {
                 rgPtr->addNet(currentNet);
             }
