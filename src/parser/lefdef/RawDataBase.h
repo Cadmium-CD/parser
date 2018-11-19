@@ -79,13 +79,13 @@ public:
     return netArray;
   }
     
-  DefParser::Net getNet(String netName){
+  DefParser::Net getNet(string netName){
     for(int i = 0; i < netArray.size(); ++i) {
         if (netName.compare(netArray[i].net_name) == 0) {
             return netArray[i];
         }
     }
-    return nullptr;
+    //return NULL;
   }
 
   void addSnetpArray(const DefParser::Snetp &snetp){

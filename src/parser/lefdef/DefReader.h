@@ -9,7 +9,8 @@
 #include "DefDriver.h"
 #include <algorithm>
 #include "RawDataBase.h"
-#include "DefReader.h"
+//#include "DefReader.h"
+
 
 
     class DefReader : public DefParser::DefDataBase {
