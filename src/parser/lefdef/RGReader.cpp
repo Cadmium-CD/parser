@@ -88,32 +88,38 @@ vector<vector<RouteGuide>> parseRouteGuid(string fileName, RawDataBase r_db){
             numMetal = (int) metal[5] - 48;
             
             //search if the route guide is already in list
-            RouteGuide* rgPtr = searchRouteGuide(vRouteGuide[numMetal],x0,y0,x1,y1);
+            RouteGuide* rgPtr = searchRouteGuide(vRouteGuide[numMetal-1],x0,y0,x1,y1);
             if (!rgPtr) {
                 RouteGuide rg = addRouteGuide(currentNet,x0,y0,x1,y1);
-                vRouteGuide[numMetal].push_back(rg);
+                //cout<<rg.netArray.size()<<endl;
+                vRouteGuide[numMetal-1].push_back(rg);
             } else {
                 rgPtr->addNet(currentNet);
+                //cout<<rgPtr->netArray.size()<<endl;
             }
         }
     }
+    //cout<<vRouteGuide[0].size()<<endl;
     return vRouteGuide;
 }
 
-/*vector<Metal> processRG(vector<RouteGuide> RG){
-    vector<Metal> vMetal[9];
+//find all potential coordinates
+
+
+//creat Panel
+vector<Metal> processRG(vector<vector<RouteGuide>> vRG,map<int, int> vertMap,map<int, int> horizMap){
+    vector<Metal> vMetal(9);
     for(int i = 0;i<9;i++){
-        vmetal[i].setHoriz((i+1)%2);
+        vMetal[i].setHoriz((i+1)%2);
     }
     for(int i = 0;i<9;i++){
-        vmetal[i].seIndex((i+1)%2);
+        vMetal[i].seIndex(i+1);
     }
     for(int i = 0;i<9;i++){
+        vMetal[i].creatPanel(vRG[i],vertMap,horizMap);
+        //cout<<"creat"<<endl;
     }
 
     return vMetal;
 }
 
-processMetal(vector<Metal> MT,top* top){
-
-}*/
