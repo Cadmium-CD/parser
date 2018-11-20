@@ -12,34 +12,13 @@
 #include <math.h>
 #include <vector>
 
-#include "RGReader.h"
+#include "../parser/lefdef/RGReader.h"
 
 
 class AP {
+public:
     double x;
     double y;
-};
-
-class GridPt {
-    
-    double x;
-    double y;
-    
-    vector<Segment> vSegment;
-    
-};
-
-
-class Grid {
-    
-    vector<vector<GridPt>> vGridPt;
-    
-    // sort in increasing order
-    void sort() {
-        
-        
-    }
-
 };
 
 class APC {
@@ -58,23 +37,55 @@ public:
     double weight;
     int degree;
     
+    //segment()= default;
     Segment(DefParser::Net net, APC apc1, APC apc2, AP AP1, AP AP2) {
-        this.net = net;
-        this.apc1 = apc1;
-        this.apc2 = apc2;
-        this.AP1 =AP1;
-        this.AP2 = AP2;
-        this.weight = abs(AP1.x - AP2.x) + abs(AP1.y - AP2.y);
-        this.degree = 0;
+        this->net = net;
+        this->apc1 = apc1;
+        this->apc2 = apc2;
+        this->AP1 =AP1;
+        this->AP2 = AP2;
+        this->weight = abs(AP1.x - AP2.x) + abs(AP1.y - AP2.y);
+        this->degree = 0;
+    }
+};
+class GridPt {
+public:  
+    double x;
+    double y;
+    
+    vector<Segment> vSegment;
+    
+};
+
+
+class Grid {
+ public:   
+    vector<vector<GridPt>> vGridPt;
+    
+    // sort in increasing order
+    void sort() {
+        
+        
+    }
+
+};
+
+
+
+
+class Edge {
+public:
+    Segment *seg1;
+    Segment *seg2;
+    //Edge()= default;
+    Edge(Segment seg1,Segment seg2){
+        this->seg1 = &seg1;
+        this->seg2 = &seg2;
     }
 };
 
-class Edge {
-    Segment seg1;
-    Segment seg2;
-};
-
-class ConflctGraph {
+class ConflictGraph {
+public:
     vector<Segment> vSegment;
     vector<Edge> vUniEdge;
     vector<Edge> vDRCEdge;
@@ -83,7 +94,7 @@ class ConflctGraph {
     
     void findMIS () {
         
-        vertex<Segment> vertices = vSegment;
+        vector<Segment> vertices = vSegment;
         
         while (vertices.size() != 0) {
         
@@ -148,7 +159,7 @@ class ConflctGraph {
     }
 
     
-}
+};
 
 
 #endif /* ConflictGraph_hpp */

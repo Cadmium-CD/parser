@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "../parser/lefdef/RGReader.h"
+#include "../gr/ConflictGraph.hpp"
 using namespace std;
 
 int main(){
