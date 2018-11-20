@@ -123,3 +123,28 @@ vector<Metal> processRG(vector<vector<RouteGuide>> vRG,map<int, int> vertMap,map
     return vMetal;
 }
 
+void findOverlap(vector<Metal>* iMetal){
+    for(int i = 0; i<(*iMetal).size();i++){
+        for(int j = 0; j<(*iMetal)[i].panelArray.size();j++){
+            for(int k = 0;k<(*iMetal)[i].panelArray[j].rgList.size();k++){
+                //upper
+                if(i<8 and (*iMetal)[i+1].panelArray[k].rgList.find(j) != (*iMetal)[i+1].panelArray[k].rgList.end()){
+                    //cout<<"overlap"<<endl;
+                    (*iMetal)[i].panelArray[j].upperOverlap.push_back(true); 
+                    //cout<<vMetal[i].panelArray[j].upperOverlap[k]<<endl;
+                }else{
+                    (*iMetal)[i].panelArray[j].upperOverlap.push_back(false);
+                }
+                //lower
+                if(i>0 and (*iMetal)[i-1].panelArray[k].rgList.find(j) != (*iMetal)[i-1].panelArray[k].rgList.end()){
+                    (*iMetal)[i].panelArray[j].lowerOverlap.push_back(true);
+                }else{
+                    (*iMetal)[i].panelArray[j].lowerOverlap.push_back(false);
+                }
+            }
+        }
+    }
+    cout<<(*iMetal)[1].panelArray[1].lowerOverlap[1]<<endl;
+    //cout<<vMetal[2].panelArray[1].upperOverlap[1]<<endl;
+}
+

@@ -1,3 +1,0 @@
-/home/cadmium/CAD_project/parser1117/CMakeFiles/edit_cache.dir
-/home/cadmium/CAD_project/parser1117/CMakeFiles/rebuild_cache.dir
-/home/cadmium/CAD_project/parser1117/CMakeFiles/ARouter.dir

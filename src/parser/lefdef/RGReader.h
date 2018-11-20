@@ -42,6 +42,8 @@ public:
 		
 	// map<int,bool>mapList;
 	// vector<route_guide nsize>rgList;/
+	vector<bool> upperOverlap;
+	vector<bool> lowerOverlap;
 	map<int,RouteGuide>rgList;
 	
 //numOfVert or numOfHoriz;	
@@ -207,6 +209,8 @@ RouteGuide* searchRouteGuide(vector<RouteGuide> vRouteGuide,double x0, double y0
 vector<vector<RouteGuide>> parseRouteGuid(string fileName, RawDataBase r_db);
 
 vector<Metal> processRG(vector<vector<RouteGuide>> RG,map<int, int> vertMap,map<int, int> horizMap);
+
+void findOverlap(vector<Metal>* iMetal);
 
 
 #endif

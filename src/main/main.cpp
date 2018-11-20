@@ -31,13 +31,26 @@ int main(){
   //sort RG by metal
   vector<Metal> MT = processRG(vRG, panelRG->vertMap, panelRG->horizMap);
 
+  //find overlap
+  findOverlap(&MT);
+  //cout<<"aa"<<endl;
 
-  
-  
+  for(int i = 0;i<MT.size();i++){
+    cout << "Metal ="<<MT[i].indexOfmetal<<endl;
+    for(int j = 0;j<MT[i].panelArray.size();j++){
+       vector<bool> temp = MT[i].panelArray[j].upperOverlap;
+        for (int k = 0;k<temp.size();k++){
+          //cout<<"hey"<<endl;
+         cout<< MT[i].panelArray[j].upperOverlap[k];
+        }
+      cout<<endl;
+    }
+  }
+ //out<< MT[0].panelArray[0].upperOverlap[2]<<endl;
 
-  printf("row name: %d\n",db->getRowArray()[0].step[0]);
+  /*printf("row name: %d\n",db->getRowArray()[0].step[0]);
   printf("macro name: %f\n",macro_db->siteSizeX);
-
+//print 
   for(int i = 0;i<MT.size();i++){
   	cout << "Metal ="<<MT[i].indexOfmetal<<endl;
   	for(int j = 0;j<MT[i].panelArray.size();j++){
@@ -62,7 +75,7 @@ int main(){
 
   for(int i = 0;i<panelRG->vertCoordinate.size();i++){
   	//cout <<panelRG->vertCoordinate[i]<<endl;
-  }
+  }*/
 
 
 }
