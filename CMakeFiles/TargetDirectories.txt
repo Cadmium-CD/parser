@@ -1,0 +1,3 @@
+/home/bttb/CAD/parser/CMakeFiles/rebuild_cache.dir
+/home/bttb/CAD/parser/CMakeFiles/ARouter.dir
+/home/bttb/CAD/parser/CMakeFiles/edit_cache.dir
