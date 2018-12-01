@@ -10,46 +10,15 @@
 
 #include <stdio.h>
 #include <math.h>
-#include <vector>
-
-#include "../parser/lefdef/RGReader.h"
 
 
 class AP {
-public:
-    double x;
-    double y;
+    Double x;
+    Double y;
 };
 
-class APC {
-public:
-    DefParser::Net net;
-    vector <AP> vAP;
-};
-
-class Segment {
-public:
-    DefParser::Net net;
-    APC apc1; //TODO: ???
-    APC apc2;
-    AP AP1;
-    AP AP2;
-    double weight;
-    int degree;
-    
-    //segment()= default;
-    Segment(DefParser::Net net, APC apc1, APC apc2, AP AP1, AP AP2) {
-        this->net = net;
-        this->apc1 = apc1;
-        this->apc2 = apc2;
-        this->AP1 =AP1;
-        this->AP2 = AP2;
-        this->weight = abs(AP1.x - AP2.x) + abs(AP1.y - AP2.y);
-        this->degree = 0;
-    }
-};
 class GridPt {
-public:  
+    
     double x;
     double y;
     
@@ -59,7 +28,7 @@ public:
 
 
 class Grid {
- public:   
+    
     vector<vector<GridPt>> vGridPt;
     
     // sort in increasing order
@@ -70,22 +39,39 @@ class Grid {
 
 };
 
-
-
-
-class Edge {
+class APC {
 public:
-    Segment *seg1;
-    Segment *seg2;
-    //Edge()= default;
-    Edge(Segment seg1,Segment seg2){
-        this->seg1 = &seg1;
-        this->seg2 = &seg2;
+    Net net;
+    vector <AP> vAP;
+};
+
+class Segment {
+public:
+    Net net;
+    APC apc1; //TODO: ???
+    APC apc2;
+    AP AP1;
+    AP AP2;
+    double weight;
+    int degree;
+    
+    Segment(Net net, APC apc1, APC apc2, AP AP1, AP AP2) {
+        this.net = net;
+        this.apc1 = apc1;
+        this.apc2 = apc2;
+        this.AP1 =AP1;
+        this.AP2 = AP2;
+        this.weight = abs(AP1.x - AP2.x) + abs(AP1.y - AP2.y);
+        this.degree = 0;
     }
 };
 
-class ConflictGraph {
-public:
+class Edge {
+    Segment seg1;
+    Segment seg2;
+};
+
+class ConflctGraph {
     vector<Segment> vSegment;
     vector<Edge> vUniEdge;
     vector<Edge> vDRCEdge;
@@ -94,7 +80,7 @@ public:
     
     void findMIS () {
         
-        vector<Segment> vertices = vSegment;
+        vertex<Segment> vertices = vSegment;
         
         while (vertices.size() != 0) {
         
@@ -159,7 +145,7 @@ public:
     }
 
     
-};
+}
 
 
 #endif /* ConflictGraph_hpp */

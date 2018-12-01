@@ -7,7 +7,7 @@
 
 #include "ConflictGraph.hpp"
 
-void genSegments (APC apc1, APC apc2, ConflictGraph conflictGraph ) {
+void genSegments (APC apc1, APC apc2, ConflictGraph conflictGraph, ) {
 
     AP ap1, ap2;
     
