@@ -32,6 +32,19 @@ public:
     void addNet(DefParser::Net net){
         netArray.push_back(net);
     }
+    
+    bool operator==(const RouteGuide& rg1, const RouteGuide& rg2) {
+        if (rg1.metal == rg2.metal) {
+            if ((rg1.x0 == rg2.x0) && (rg1.x1 == rg2.x1)) {
+                if ((rg1.y0 == rg2.y0) && (rg1.y1 == rg2.y1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+        
+    }
+    
 };
 //petal class
 class panel{

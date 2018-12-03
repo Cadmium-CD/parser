@@ -7,7 +7,7 @@
 
 #include "ConflictGraph.hpp"
 
-void genSegments (APC apc1, APC apc2, ConflictGraph conflictGraph, ) {
+void genSegments (APC apc1, APC apc2, RouteGuide rg1, RouteGuide rg2, ConflictGraph conflictGraph) {
 
     AP ap1, ap2;
     
@@ -19,7 +19,7 @@ void genSegments (APC apc1, APC apc2, ConflictGraph conflictGraph, ) {
             
             ap2 = apc2.vAP[j];
             
-            Segment segment = Segment(apc1.net, apc1, apc2, ap1, ap2);
+            Segment segment = Segment(apc1.net, apc1, apc2, rg1, rg2, ap1, ap2);
             
             //TODO: need to points to grid
             

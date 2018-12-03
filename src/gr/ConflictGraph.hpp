@@ -13,8 +13,15 @@
 
 
 class AP {
-    Double x;
-    Double y;
+    double x;
+    double y;
+    bool via;
+    
+    AP (double x, double y) {
+        this->x = x;
+        this->y = y;
+        this->via = false;
+    }
 };
 
 class GridPt {
@@ -41,7 +48,7 @@ class Grid {
 
 class APC {
 public:
-    Net net;
+    DefParser::Net net;
     vector <AP> vAP;
 };
 
@@ -50,15 +57,18 @@ public:
     Net net;
     APC apc1; //TODO: ???
     APC apc2;
+    RouteGuide rg1, rg2;
     AP AP1;
     AP AP2;
     double weight;
     int degree;
     
-    Segment(Net net, APC apc1, APC apc2, AP AP1, AP AP2) {
+    Segment(Net net, APC apc1, APC apc2, RouteGuide rg1, RouteGuide rg2, AP AP1, AP AP2) {
         this.net = net;
         this.apc1 = apc1;
         this.apc2 = apc2;
+        this.rg1 = rg1;
+        this.rg2 = rg2;
         this.AP1 =AP1;
         this.AP2 = AP2;
         this.weight = abs(AP1.x - AP2.x) + abs(AP1.y - AP2.y);
@@ -67,11 +77,17 @@ public:
 };
 
 class Edge {
-    Segment seg1;
-    Segment seg2;
+    Segment* seg1;
+    Segment* seg2;
+
+    Edge(Segment seg1,Segment seg2){
+        this->seg1 = &seg1;
+        this->seg2 = &seg2;
+    }
+
 };
 
-class ConflctGraph {
+class ConflictGraph {
     vector<Segment> vSegment;
     vector<Edge> vUniEdge;
     vector<Edge> vDRCEdge;
@@ -80,7 +96,7 @@ class ConflctGraph {
     
     void findMIS () {
         
-        vertex<Segment> vertices = vSegment;
+        vector<Segment> vertices = vSegment;
         
         while (vertices.size() != 0) {
         
