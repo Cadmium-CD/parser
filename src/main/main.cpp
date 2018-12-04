@@ -1,14 +1,17 @@
 #include <vector>
 #include <string>
 #include <iostream>
+//#include "../parser/lefdef/DefReader.h"
+//#include "../parser/lefdef/RawDataBase.h"
+//#include "../parser/lefdef/LefReader.h"
 #include "../gr/ConflictGraph.hpp"
 using namespace std;
 
 int main(){
 
-  string def_file = "/home/CAD/parser/src/main/ispd18_sample.input.def";
-  string lef_file = "/home/CAD/parser/src/main/ispd18_sample.input.lef";
-  string RG_file = "/home/CAD/parser/src/main/ispd18_sample.input.guide";
+  string def_file = "/home/parallels/CAD/parser/src/main/ispd18_sample.input.def";
+  string lef_file = "/home/parallels/CAD/parser/src/main/ispd18_sample.input.lef";
+  string RG_file = "/home/parallels/CAD/parser/src/main/ispd18_sample.input.guide";
 
 
   RawDataBase* db = new RawDataBase();

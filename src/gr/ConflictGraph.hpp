@@ -10,22 +10,59 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <vector>
+#include "../parser/lefdef/RGReader.h"
 
+using namespace std;
 
 class AP {
+public:
     double x;
     double y;
     bool via;
-    
+
     AP (double x, double y) {
-        this->x = x;
-        this->y = y;
-        this->via = false;
+	this->x = x;
+	this->y = y;
+	this->via = false;
     }
 };
 
-class GridPt {
+class APC {
+public:
+    DefParser::Net net;
+    vector <AP> vAP;
+};
+
+
+class Segment {
+public:
+    DefParser::Net net;
+    APC* apc1; //TODO: ???
+    APC* apc2;
+    RouteGuide* rg1;
+    RouteGuide* rg2;
+    AP* AP1;
+    AP* AP2;
+    double weight;
+    int degree;
     
+    Segment(DefParser::Net net, APC apc1, APC apc2, RouteGuide rg1, RouteGuide rg2, AP AP1, AP AP2) {
+        this->net = net;
+        this->apc1 = &apc1;
+        this->apc2 = &apc2;
+        this->rg1 = &rg1;
+        this->rg2 = &rg2;
+        this->AP1 = &AP1;
+        this->AP2 = &AP2;
+        this->weight = abs(AP1.x - AP2.x) + abs(AP1.y - AP2.y);
+        this->degree = 0;
+    }
+};
+
+
+class GridPt {
+public:
     double x;
     double y;
     
@@ -35,9 +72,8 @@ class GridPt {
 
 
 class Grid {
-    
+public:
     vector<vector<GridPt>> vGridPt;
-    
     // sort in increasing order
     void sort() {
         
@@ -46,41 +82,12 @@ class Grid {
 
 };
 
-class APC {
-public:
-    DefParser::Net net;
-    vector <AP> vAP;
-};
-
-class Segment {
-public:
-    Net net;
-    APC apc1; //TODO: ???
-    APC apc2;
-    RouteGuide rg1, rg2;
-    AP AP1;
-    AP AP2;
-    double weight;
-    int degree;
-    
-    Segment(Net net, APC apc1, APC apc2, RouteGuide rg1, RouteGuide rg2, AP AP1, AP AP2) {
-        this.net = net;
-        this.apc1 = apc1;
-        this.apc2 = apc2;
-        this.rg1 = rg1;
-        this.rg2 = rg2;
-        this.AP1 =AP1;
-        this.AP2 = AP2;
-        this.weight = abs(AP1.x - AP2.x) + abs(AP1.y - AP2.y);
-        this.degree = 0;
-    }
-};
-
 class Edge {
+public:
     Segment* seg1;
     Segment* seg2;
 
-    Edge(Segment seg1,Segment seg2){
+    Edge(Segment seg1, Segment seg2){
         this->seg1 = &seg1;
         this->seg2 = &seg2;
     }
@@ -88,6 +95,7 @@ class Edge {
 };
 
 class ConflictGraph {
+public:
     vector<Segment> vSegment;
     vector<Edge> vUniEdge;
     vector<Edge> vDRCEdge;
@@ -161,7 +169,7 @@ class ConflictGraph {
     }
 
     
-}
+};
 
 
 #endif /* ConflictGraph_hpp */

@@ -33,10 +33,10 @@ public:
         netArray.push_back(net);
     }
     
-    bool operator==(const RouteGuide& rg1, const RouteGuide& rg2) {
-        if (rg1.metal == rg2.metal) {
-            if ((rg1.x0 == rg2.x0) && (rg1.x1 == rg2.x1)) {
-                if ((rg1.y0 == rg2.y0) && (rg1.y1 == rg2.y1)){
+    bool operator==(const RouteGuide& rg) {
+        if (this->metal == rg.metal) {
+            if ((this->x0 == rg.x0) && (this->x1 == rg.x1)) {
+                if ((this->y0 == rg.y0) && (this->y1 == rg.y1)){
                     return true;
                 }
             }

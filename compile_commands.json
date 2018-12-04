@@ -1,57 +1,57 @@
 [
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/main/main.cpp.o -c /home/bttb/CAD/parser/src/main/main.cpp",
-  "file": "/home/bttb/CAD/parser/src/main/main.cpp"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/main/main.cpp.o -c /home/parallels/CAD/parser/src/main/main.cpp",
+  "file": "/home/parallels/CAD/parser/src/main/main.cpp"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/db/lefiLayer.cpp.o -c /home/bttb/CAD/parser/src/db/lefiLayer.cpp",
-  "file": "/home/bttb/CAD/parser/src/db/lefiLayer.cpp"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/db/lefiLayer.cpp.o -c /home/parallels/CAD/parser/src/db/lefiLayer.cpp",
+  "file": "/home/parallels/CAD/parser/src/db/lefiLayer.cpp"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o -c /home/bttb/CAD/parser/src/util/MsgPrinter.cpp",
-  "file": "/home/bttb/CAD/parser/src/util/MsgPrinter.cpp"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/util/MsgPrinter.cpp.o -c /home/parallels/CAD/parser/src/util/MsgPrinter.cpp",
+  "file": "/home/parallels/CAD/parser/src/util/MsgPrinter.cpp"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/gr/ConflictGraph.cpp.o -c /home/bttb/CAD/parser/src/gr/ConflictGraph.cpp",
-  "file": "/home/bttb/CAD/parser/src/gr/ConflictGraph.cpp"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/gr/ConflictGraph.cpp.o -c /home/parallels/CAD/parser/src/gr/ConflictGraph.cpp",
+  "file": "/home/parallels/CAD/parser/src/gr/ConflictGraph.cpp"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o -c /home/bttb/CAD/parser/src/parser/lefdef/DefReader.cpp",
-  "file": "/home/bttb/CAD/parser/src/parser/lefdef/DefReader.cpp"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/RGReader.cpp.o -c /home/parallels/CAD/parser/src/parser/lefdef/RGReader.cpp",
+  "file": "/home/parallels/CAD/parser/src/parser/lefdef/RGReader.cpp"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o -c /home/bttb/CAD/parser/src/parser/lefdef/LefReader.cpp",
-  "file": "/home/bttb/CAD/parser/src/parser/lefdef/LefReader.cpp"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefReader.cpp.o -c /home/parallels/CAD/parser/src/parser/lefdef/DefReader.cpp",
+  "file": "/home/parallels/CAD/parser/src/parser/lefdef/DefReader.cpp"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/RGReader.cpp.o -c /home/bttb/CAD/parser/src/parser/lefdef/RGReader.cpp",
-  "file": "/home/bttb/CAD/parser/src/parser/lefdef/RGReader.cpp"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefReader.cpp.o -c /home/parallels/CAD/parser/src/parser/lefdef/LefReader.cpp",
+  "file": "/home/parallels/CAD/parser/src/parser/lefdef/LefReader.cpp"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o -c /home/bttb/CAD/parser/src/parser/lefdef/DefDataBase.cc",
-  "file": "/home/bttb/CAD/parser/src/parser/lefdef/DefDataBase.cc"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o -c /home/parallels/CAD/parser/src/parser/lefdef/DefDriver.cc",
+  "file": "/home/parallels/CAD/parser/src/parser/lefdef/DefDriver.cc"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDriver.cc.o -c /home/bttb/CAD/parser/src/parser/lefdef/DefDriver.cc",
-  "file": "/home/bttb/CAD/parser/src/parser/lefdef/DefDriver.cc"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/DefDataBase.cc.o -c /home/parallels/CAD/parser/src/parser/lefdef/DefDataBase.cc",
+  "file": "/home/parallels/CAD/parser/src/parser/lefdef/DefDataBase.cc"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o -c /home/bttb/CAD/parser/src/parser/lefdef/LefDataBase.cc",
-  "file": "/home/bttb/CAD/parser/src/parser/lefdef/LefDataBase.cc"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDataBase.cc.o -c /home/parallels/CAD/parser/src/parser/lefdef/LefDataBase.cc",
+  "file": "/home/parallels/CAD/parser/src/parser/lefdef/LefDataBase.cc"
 },
 {
-  "directory": "/home/bttb/CAD/parser",
-  "command": "/usr/bin/c++   -I/home/bttb/CAD/parser/src -I/home/bttb/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o -c /home/bttb/CAD/parser/src/parser/lefdef/LefDriver.cc",
-  "file": "/home/bttb/CAD/parser/src/parser/lefdef/LefDriver.cc"
+  "directory": "/home/parallels/CAD/parser",
+  "command": "/usr/bin/c++    -I/home/parallels/CAD/parser/src -I/home/parallels/CAD/parser/include  -std=c++14 -Wall -march=native -fopenmp -fext-numeric-literals   -std=gnu++14 -o CMakeFiles/ARouter.dir/src/parser/lefdef/LefDriver.cc.o -c /home/parallels/CAD/parser/src/parser/lefdef/LefDriver.cc",
+  "file": "/home/parallels/CAD/parser/src/parser/lefdef/LefDriver.cc"
 }
 ]
